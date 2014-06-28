@@ -8,6 +8,7 @@ var MgSession = require('../lib/MgSession');
 
 describe("MgSession", function () { 
   describe("#getSessionCookieJar", function () { 
+    this.timeout(3000);
     var sess;
     beforeEach(function() {
       sess = new MgSession();
