@@ -1,4 +1,4 @@
-# mcgill-minerva-api [![Build Status](https://secure.travis-ci.org/charlespwd/mcgill-courses-api.png?branch=master)](http://travis-ci.org/charlespwd/mcgill-courses-api)
+# mcgill-minerva-api
 
 A javascript abstraction layer over McGill's awful minerva. 
 
@@ -6,25 +6,66 @@ A javascript abstraction layer over McGill's awful minerva.
 Install the module with: `npm install mcgill-minerva-api`
 
 ```javascript
-var Session = require('mcgill-minerva-api');
-var session = new Session(username, password); // or store 'em in environment MG_USER & MG_PASS
-session.getCourses({ dep: 'COMP', number: '250', season: 'w', year: '2015' }); 
-// => [{ 
-//  Subj: 'COMP',
-//  Crse: '250',
-//  CRN: '709',
-//  Type: 'Lecture', 
-//  Days: 'MWF',
-//  Time: '09:35 AM-10:25 AM', 
-//  Instructor: 'Martin Robillard'
-//  ... 
-//  },{
-//    ...
-//  }]
+var Minerva = require('mcgill-minerva-api');
+var session = new Minerva(username, password); // or store 'em in environment MG_USER & MG_PASS
+session.getCourses({ 
+  dep: 'COMP',
+  number: '250', 
+  season: 'w', 
+  year: '2015' 
+  }).then(function(courses) {
+    console.log(courses);
+      // => [{ 
+      //  isFull: false,
+      //  CRN: '709',
+      //  Subj: 'COMP',
+      //  Crse: '250',
+      //  Type: 'Lecture', 
+      //  Days: ['MWF'],
+      //  Time: ['09:35 AM-10:25 AM'], 
+      //  Instructor: 'Martin Robillard',
+      //  Status: 'Active'
+      //  },{
+      //    ...
+      //  }]
+  }); 
 ```
 
 ## Documentation
-_(Coming soon)_
+`Minerva`'s functions are promises, see Kris Kowal's very excellent [Q](https://github.com/kriskowal/q) module. 
+Therefore, to use the results of the function you need to chain chain a `then`.
+  * `getTranscript()`: returns a promise for an array of courses. Course example:  
+```javascript
+{
+  "RW": " " || "RW", // Web registered or not
+  "Subj": "COMP",
+  "Crse": "208",
+  "Sec": "001",
+  "Credits": "2",
+  "Grade": "A",
+  "ClassAvg": "A"
+}
+```
+  * `getCourses(options)`: returns a promise for an array of courses 
+      searched on minerva (for regitration). `options` can take :
+      + `dep:`, e.g. "MATH",
+      + `number`, e.g. "280",
+      + `season`, takes `w`, `s`, or `f`. 
+      + `year`, takes XXXX,
+    Return value example: 
+```javascript
+{
+  "isFull": true || false,
+  "CRN": '709',
+  "Subj": 'COMP',
+  "Crse": '250',
+  "Type": 'Lecture', 
+  "Days": ['MWF'],
+  "Time": ['09:35 AM-10:25 AM'], 
+  "Instructor": 'Martin Robillard',
+  "Status": 'Active'
+}
+```
 
 ## Examples
 _(Coming soon)_
