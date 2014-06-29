@@ -1,0 +1,2317 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML lang="en">
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<META HTTP-EQUIV="Pragma" NAME="Cache-Control" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" NAME="Cache-Control" CONTENT="no-cache">
+<LINK REL="stylesheet" HREF="/css/web_defaultapp.css" TYPE="text/css">
+<LINK REL="stylesheet" HREF="/css/web_defaultprint.css" TYPE="text/css" media="print">
+<TITLE>Look Up Course Sections</TITLE>
+<META HTTP-EQUIV="Content-Script-Type" NAME="Default_Script_Language" CONTENT="text/javascript">
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+<!-- Hide JavaScript from older browsers 
+var submitcount=0;
+function checkSubmit() {
+if (submitcount == 0)
+   {
+   submitcount++;
+   return true;
+   }
+else
+   {
+alert("Your changes have already been submitted.");
+   return false;
+   }
+}
+//  End script hiding -->
+</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+<!-- Hide JavaScript from older browsers 
+//  Function to open a window
+function windowOpen(window_url) {
+   helpWin = window.open(window_url,'','toolbar=yes,status=no,scrollbars=yes,menubar=yes,resizable=yes,directories=no,location=no,width=350,height=400');
+   if (document.images) { 
+       if (helpWin) helpWin.focus()
+   }
+}
+//  End script hiding -->
+</SCRIPT>
+</HEAD>
+<BODY>
+<DIV class="headerwrapperdiv">
+<DIV class="pageheaderdiv1">
+<A HREF="#main_content" onMouseover="window.status='Go to Main Content'; return true" onMouseout="window.status=''; return true" OnFocus="window.status='Go to Main Content'; return true" onBlur="window.status=''; return true" class="skiplinks">Go to Main Content</A>
+<H1>Minerva</H1></DIV><DIV class="headerlinksdiv">
+<SPAN class="pageheaderlinks2">
+<MAP NAME="Module_Navigation_Links_H" title="Module Navigation Links">
+<p>
+<A HREF="#skip_Module_Navigation_Links_H" onMouseover="window.status='Skip Module Navigation Links'; return true" onMouseout="window.status=''; return true" onFocus="window.status='Skip Module Navigation Links'; return true" onBlur="window.status=''; return true"  class="skiplinks">Skip Module Navigation Links</A>
+<TABLE  CLASS="plaintable" SUMMARY="This is main table for displaying Tab Items."
+                          WIDTH="100%" cellSpacing=0 cellPadding=0 border=0>
+<TR>
+<TD CLASS="pldefault">
+<TABLE  CLASS="plaintable" SUMMARY="This table displays Tab Items."
+                 cellSpacing=0 cellPadding=0 border=0>
+<TR>
+<td class=taboff  height=22>
+<A HREF="/pban1/twbkwbis.P_GenMenu?name=bmenu.P_MainMnu" onMouseover="window.status='Main menu'; return true" onMouseout="window.status=''; return true" onFocus="window.status='Main menu'; return true" onBlur="window.status=''; return true" >MAIN MENU</A>
+</TD>
+<TD class=bgtaboff height=22 vAlign=top align=right>
+<IMG SRC="/wtlgifs/web_tab_corner_right.gif" ALT="Tab Corner Right" CLASS="headerImg" TITLE="Tab Corner Right"  NAME="web_tab_corner_right" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=20 WIDTH=8>
+</TD>
+<td class=taboff  height=22>
+<A HREF="/pban1/twbkwbis.P_GenMenu?name=bmenu.P_PersonalMnu" onMouseover="window.status='Personal Menu'; return true" onMouseout="window.status=''; return true" onFocus="window.status='Personal Menu'; return true" onBlur="window.status=''; return true" >Personal</A>
+</TD>
+<TD class=bgtaboff height=22 vAlign=top align=right>
+<IMG SRC="/wtlgifs/web_tab_corner_right.gif" ALT="Tab Corner Right" CLASS="headerImg" TITLE="Tab Corner Right"  NAME="web_tab_corner_right" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=20 WIDTH=8>
+</TD>
+<td class=taboff  height=22>
+<A HREF="/pban1/twbkwbis.P_GenMenu?name=bmenu.P_StuMainMnu" onMouseover="window.status='Student Menu'; return true" onMouseout="window.status=''; return true" onFocus="window.status='Student Menu'; return true" onBlur="window.status=''; return true" >Student</A>
+</TD>
+<TD class=bgtaboff height=22 vAlign=top align=right>
+<IMG SRC="/wtlgifs/web_tab_corner_right.gif" ALT="Tab Corner Right" CLASS="headerImg" TITLE="Tab Corner Right"  NAME="web_tab_corner_right" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=20 WIDTH=8>
+</TD>
+<td class=taboff  height=22>
+<A HREF="/pban1/twbkwbis.P_GenMenu?name=bmenu.P_ApplMnu" onMouseover="window.status='Applicant Menu'; return true" onMouseout="window.status=''; return true" onFocus="window.status='Applicant Menu'; return true" onBlur="window.status=''; return true" >Applicant</A>
+</TD>
+<TD class=bgtaboff height=22 vAlign=top align=right>
+<IMG SRC="/wtlgifs/web_tab_corner_right.gif" ALT="Tab Corner Right" CLASS="headerImg" TITLE="Tab Corner Right"  NAME="web_tab_corner_right" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=20 WIDTH=8>
+</TD>
+<td class=taboff  height=22>
+<A HREF="/pban1/twbkwbis.P_GenMenu?name=bmenu.P_BsacMnu" onMouseover="window.status='Financial Aid/Awards'; return true" onMouseout="window.status=''; return true" onFocus="window.status='Financial Aid/Awards'; return true" onBlur="window.status=''; return true" >Financial Aid/Awards</A>
+</TD>
+<TD class=bgtaboff height=22 vAlign=top align=right>
+<IMG SRC="/wtlgifs/web_tab_corner_right.gif" ALT="Tab Corner Right" CLASS="headerImg" TITLE="Tab Corner Right"  NAME="web_tab_corner_right" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=20 WIDTH=8>
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+<TR>
+<TD class=bgtabon width="100%" colSpan=2><IMG SRC="/wtlgifs/web_transparent.gif" ALT="Transparent Image" CLASS="headerImg" TITLE="Transparent Image"  NAME="web_transparent" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=3 WIDTH=10></TD></TR></TABLE>
+</MAP>
+</SPAN>
+<a name="skip_Module_Navigation_Links_H"></a>
+</DIV>
+<TABLE  CLASS="plaintable" SUMMARY="This table displays Menu Items and Banner Search textbox."
+         WIDTH="100%">
+<TR>
+<TD CLASS="pldefault">
+<DIV class="headerlinksdiv2">
+<FORM ACTION="/pban1/twbksrch.P_ShowResults" METHOD="POST">
+Search
+<SPAN class=fieldlabeltextinvisible><LABEL for=keyword_in_id><SPAN class=fieldlabeltext>Search</SPAN></LABEL></SPAN>
+<INPUT TYPE="text" NAME="KEYWRD_IN" SIZE="20" MAXLENGTH="65" ID="keyword_in_id">
+<INPUT TYPE="submit" VALUE="Go">
+</FORM>
+</div>
+</TD>
+<TD CLASS="pldefault"><p class="rightaligntext">
+<SPAN class="pageheaderlinks">
+<A HREF="/pban1/twbkwbis.P_GenMenu?name=bmenu.P_RegMnu"  class="submenulinktext2" id="ssbbackurl">MENU</A>
+|
+<A HREF="/pban1/twbksite.P_DispSiteMap?menu_name_in=bmenu.P_MainMnu&amp;depth_in=2&amp;columns_in=3" accesskey="2" class="submenulinktext2">SITE MAP</A>
+|
+<A HREF="http://www.is.mcgill.ca/whelp/sis_help/rg_3a_cs_add.htm" accesskey="H" onClick="popup = window.open('http://www.is.mcgill.ca/whelp/sis_help/rg_3a_cs_add.htm', 'PopupPage','height=450,width=500,scrollbars=yes,resizable=yes'); return false" target="_blank" onMouseOver="window.status='';  return true" onMouseOut="window.status=''; return true"onFocus="window.status='';  return true" onBlur="window.status=''; return true"  class="submenulinktext2">HELP</A>
+|
+<A HREF="twbkwbis.P_Logout" accesskey="3" class="submenulinktext2">EXIT</A>
+</span>
+</TD>
+</TR>
+</TABLE>
+</DIV>
+<DIV class="pagetitlediv">
+<TABLE  CLASS="plaintable" SUMMARY="This table displays title and static header displays."
+   WIDTH="100%">
+<TR>
+<TD CLASS="pldefault">
+<H2>Look Up Course Sections</H2>
+</TD>
+<TD CLASS="pldefault">
+&nbsp;
+</TD>
+<TD CLASS="pldefault"><p class="rightaligntext">
+<DIV class="staticheaders">
+260421979 Charles-Philipp Clermont<br>
+Winter 2015<br>
+Jun 29, 2014 08:20 AM<br>
+</div>
+</TD>
+</TR>
+<TR>
+<TD class="bg3" width="100%" colSpan=3><IMG SRC="/wtlgifs/web_transparent.gif" ALT="Transparent Image" CLASS="headerImg" TITLE="Transparent Image"  NAME="web_transparent" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=3 WIDTH=10></TD>
+</TR>
+</TABLE>
+<a name="main_content"></a>
+</DIV>
+<DIV class="pagebodydiv">
+<!--  ** END OF twbkwbis.P_OpenDoc **  -->
+<FORM ACTION="/pban1/bwskfreg.P_AltPin1" METHOD="POST" onSubmit="return checkSubmit()">
+<DIV class="infotextdiv"><TABLE  CLASS="infotexttable" SUMMARY="This layout table contains information that may be helpful in understanding the content and functionality of this page.  It could be a brief set of instructions, a description of error messages, or other special information."><TR><TD CLASS="indefault"><IMG SRC="/wtlgifs/web_info_cascade.png" ALT="Information" CLASS="headerImg" TITLE="Information"  NAME="web_info" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=12 WIDTH=14></TD><TD CLASS="indefault"><SPAN class=infotext> <UL>
+<li>To register for course sections, check the box in the <strong>Select</strong> column on the far left then click the <strong>Register</strong> button.
+<li>If a course section is full ("C" where the box normally displays) and space exists on a waitlist (see column Waitlist Remaining <b>WL Rem</b>), click <b>HELP</b> for instructions on how to add yourself to a waitlist.
+<LI>Click <strong>HELP</strong> at the top right corner of your screen for explanations of other codes found below.
+<LI>Click on the CRN (Course Reference Number) to see the course description.
+<LI>From the course description, click on the <b>Syllabus Available</b> link (where available) to see the course outline.
+<LI>It is your responsibility to fulfill prerequisites as described in the calendar for the course sections you are adding.</li>
+</li></UL>
+
+</p> <!--<P><FONT color=#ff0000><B>Fall term holiday schedule changes</B>: <BR>The normal Thursday schedule of course activities is cancelled for December 3, 2009. In its place, all lectures, labs, conferences and other course-related activities that are normally held on Mondays will be held on Thursday, December 3, 2009 as well. This change in schedule is to make up for activities that are cancelled on Monday, October 12 due to Thanksgiving Day.</FONT></P><p><b>Winter term study break: </b>  February 22 to 26, 2010<br><br>Classes are cancelled for all faculties <b>except</b> Dentistry, Medicine, Continuing Education (non-credit courses and English & French credit courses), Stage in Dietetics Level 3 and Student Teaching for Education students.</p> --><p><a href="http://www.mcgill.ca/importantdates" target="_blank">http://www.mcgill.ca/importantdates</a> offers a more comprehensive listing of dates (including holidays).</P></SPAN></TD></TR></TABLE><P></DIV>
+<INPUT TYPE="hidden" NAME="TERM_IN" VALUE="201501">
+<INPUT TYPE="hidden" NAME="sel_crn" VALUE="dummy">
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="dummy">
+<INPUT TYPE="hidden" NAME="ADD_BTN" VALUE="dummy">
+<TABLE  CLASS="datadisplaytable" SUMMARY="This layout table is used to present the sections found" width="100%"><CAPTION class="captiontext">Sections Found</CAPTION>
+<TR>
+<TH COLSPAN="23" CLASS="ddtitle" scope="colgroup" >Computer Science (Sci)</TH>
+</TR>
+<TR>
+<TH CLASS="ddheader" scope="col" >Select</TH>
+<TH CLASS="ddheader" scope="col" ><ACRONYM title = "Course Reference Number">CRN</ACRONYM></TH>
+<TH CLASS="ddheader" scope="col" ><ABBR title = Subject>Subj</ABBR></TH>
+<TH CLASS="ddheader" scope="col" ><ABBR title = Course>Crse</ABBR></TH>
+<TH CLASS="ddheader" scope="col" ><ABBR title = Section>Sec</ABBR></TH>
+<TH CLASS="ddheader" scope="col" ><ABBR title = Type>Type</ABBR></TH>
+<TH CLASS="ddheader" scope="col" ><ABBR title = "Credit Hours">Credits/CE Units</ABBR></TH>
+<TH CLASS="ddheader" scope="col" >Title</TH>
+<TH CLASS="ddheader" scope="col" >Days</TH>
+<TH CLASS="ddheader" scope="col" >Time</TH>
+<TH CLASS="ddheader" scope="col" ><ABBR title = "Section Capacity">Cap</ABBR></TH>
+<TH CLASS="ddheader" scope="col" ><ABBR title = "Section Actual">Act</ABBR></TH>
+<TH CLASS="ddheader" scope="col" ><ABBR title = "Section Remaining">Rem</ABBR></TH>
+<TH CLASS="ddheader" scope="col" ><ABBR title = "Waitlist Capacity">WL Cap</ABBR></TH>
+<TH CLASS="ddheader" scope="col" ><ABBR title = "Waitlist Actual">WL Act</ABBR></TH>
+<TH CLASS="ddheader" scope="col" ><ABBR title = "Waitlist Remaining">WL Rem</ABBR></TH>
+<TH CLASS="ddheader" scope="col" >Instructor</TH>
+<TH CLASS="ddheader" scope="col" >Date (<ABBR title = "month month">MM</ABBR>/<ABBR title = "day day">DD</ABBR>)</TH>
+<TH CLASS="ddheader" scope="col" >Location</TH>
+<TH CLASS="ddheader" scope="col" >Status</TH>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="9425 201501" ID="action_id1">
+<LABEL for=action_id1><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=102&amp;crn_in=9425&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">9425</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">102</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Computers and Computing.</TD>
+<TD CLASS="dddefault">MW</TD>
+<TD NOWRAP CLASS="dddefault">02:35 PM-03:55 PM</TD>
+<TD CLASS="dddefault">94</TD>
+<TD CLASS="dddefault">38</TD>
+<TD CLASS="dddefault">56</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Kaleem Siddiqi </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault">ENGTR 0100</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="698 201501" ID="action_id3">
+<LABEL for=action_id3><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=202&amp;crn_in=698&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">698</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">202</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Foundations of Programming.</TD>
+<TD CLASS="dddefault">MWF</TD>
+<TD NOWRAP CLASS="dddefault">03:35 PM-04:25 PM</TD>
+<TD CLASS="dddefault">160</TD>
+<TD CLASS="dddefault">55</TD>
+<TD CLASS="dddefault">105</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault">MDHAR G-10</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">T</TD>
+<TD NOWRAP CLASS="dddefault">03:35 PM-04:25 PM</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">04/14-04/14</TD>
+<TD CLASS="dddefault">MDHAR G-10</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="703 201501" ID="action_id5">
+<LABEL for=action_id5><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=202&amp;crn_in=703&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">703</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">202</TD>
+<TD CLASS="dddefault">002</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Foundations of Programming.</TD>
+<TD CLASS="dddefault">TR</TD>
+<TD NOWRAP CLASS="dddefault">10:05 AM-11:25 AM</TD>
+<TD CLASS="dddefault">180</TD>
+<TD CLASS="dddefault">175</TD>
+<TD CLASS="dddefault">5</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">01/05-04/13</TD>
+<TD CLASS="dddefault">BRONF 151</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="705 201501" ID="action_id7">
+<LABEL for=action_id7><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=202&amp;crn_in=705&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">705</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">202</TD>
+<TD CLASS="dddefault">003</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Foundations of Programming.</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">120</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">120</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">Temporarily closed</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="707 201501" ID="action_id9">
+<LABEL for=action_id9><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=206&amp;crn_in=707&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">707</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">206</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Introduction to Software Systems.</TD>
+<TD CLASS="dddefault">TR</TD>
+<TD NOWRAP CLASS="dddefault">10:05 AM-11:25 AM</TD>
+<TD CLASS="dddefault">237</TD>
+<TD CLASS="dddefault">215</TD>
+<TD CLASS="dddefault">22</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Joseph P Vybihal </TD>
+<TD CLASS="dddefault">01/05-04/13</TD>
+<TD CLASS="dddefault">SADB M-1</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD COLSPAN="22" CLASS="dddefault">NOTES: Waitlist section-use Quick Add. </TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="3050 201501" ID="action_id11">
+<LABEL for=action_id11><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=208&amp;crn_in=3050&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">3050</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">208</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Computers in Engineering.</TD>
+<TD CLASS="dddefault">MW</TD>
+<TD NOWRAP CLASS="dddefault">01:05 PM-02:25 PM</TD>
+<TD CLASS="dddefault">169</TD>
+<TD CLASS="dddefault">93</TD>
+<TD CLASS="dddefault">76</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Nathan Friedman </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault">LEA 26</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="3048 201501" ID="action_id13">
+<LABEL for=action_id13><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=208&amp;crn_in=3048&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">3048</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">208</TD>
+<TD CLASS="dddefault">002</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Computers in Engineering.</TD>
+<TD CLASS="dddefault">TR</TD>
+<TD NOWRAP CLASS="dddefault">10:05 AM-11:25 AM</TD>
+<TD CLASS="dddefault">110</TD>
+<TD CLASS="dddefault">44</TD>
+<TD CLASS="dddefault">66</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Wenbo He </TD>
+<TD CLASS="dddefault">01/05-04/13</TD>
+<TD CLASS="dddefault">ENGTR 0100</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="709 201501" ID="action_id15">
+<LABEL for=action_id15><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=250&amp;crn_in=709&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">709</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">250</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Introduction to Computer Science.</TD>
+<TD CLASS="dddefault">MWF</TD>
+<TD NOWRAP CLASS="dddefault">09:35 AM-10:25 AM</TD>
+<TD CLASS="dddefault">253</TD>
+<TD CLASS="dddefault">150</TD>
+<TD CLASS="dddefault">103</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Martin Robillard </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault">ADAMS AUD</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">T</TD>
+<TD NOWRAP CLASS="dddefault">09:35 AM-10:25 AM</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">Martin Robillard </TD>
+<TD CLASS="dddefault">04/14-04/14</TD>
+<TD CLASS="dddefault">ADAMS AUD</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD COLSPAN="22" CLASS="dddefault">NOTES: Waitlist section-use Quick Add. </TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="711 201501" ID="action_id17">
+<LABEL for=action_id17><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=251&amp;crn_in=711&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">711</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">251</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Algorithms and Data Structures.</TD>
+<TD CLASS="dddefault">MW</TD>
+<TD NOWRAP CLASS="dddefault">11:35 AM-12:55 PM</TD>
+<TD CLASS="dddefault">178</TD>
+<TD CLASS="dddefault">173</TD>
+<TD CLASS="dddefault">5</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Jérôme Waldispuhl </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault">MDHAR G-10</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD COLSPAN="22" CLASS="dddefault">NOTES: Waitlist section-use Quick Add. </TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="2164 201501" ID="action_id19">
+<LABEL for=action_id19><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=252&amp;crn_in=2164&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">2164</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">252</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Honours Algorithms and Data Structures.</TD>
+<TD CLASS="dddefault">TR</TD>
+<TD NOWRAP CLASS="dddefault">11:35 AM-12:55 PM</TD>
+<TD CLASS="dddefault">52</TD>
+<TD CLASS="dddefault">32</TD>
+<TD CLASS="dddefault">20</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Hamed Hatami </TD>
+<TD CLASS="dddefault">01/05-04/13</TD>
+<TD CLASS="dddefault">ENGTR 0070</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="716 201501" ID="action_id21">
+<LABEL for=action_id21><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=273&amp;crn_in=716&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">716</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">273</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Introduction to Computer Systems.</TD>
+<TD CLASS="dddefault">TR</TD>
+<TD NOWRAP CLASS="dddefault">04:05 PM-05:25 PM</TD>
+<TD CLASS="dddefault">165</TD>
+<TD CLASS="dddefault">124</TD>
+<TD CLASS="dddefault">41</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Joseph P Vybihal </TD>
+<TD CLASS="dddefault">01/05-04/13</TD>
+<TD CLASS="dddefault">LEA 26</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="8225 201501" ID="action_id23">
+<LABEL for=action_id23><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=302&amp;crn_in=8225&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">8225</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">302</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Programming Languages and Paradigms.</TD>
+<TD CLASS="dddefault">MWF</TD>
+<TD NOWRAP CLASS="dddefault">10:35 AM-11:25 AM</TD>
+<TD CLASS="dddefault">170</TD>
+<TD CLASS="dddefault">120</TD>
+<TD CLASS="dddefault">50</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Nathan Friedman </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault">MDHAR G-10</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">T</TD>
+<TD NOWRAP CLASS="dddefault">10:35 AM-11:25 AM</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">Nathan Friedman </TD>
+<TD CLASS="dddefault">04/14-04/14</TD>
+<TD CLASS="dddefault">MDHAR G-10</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD COLSPAN="22" CLASS="dddefault">NOTES: Waitlist section-use Quick Add. </TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="6652 201501" ID="action_id25">
+<LABEL for=action_id25><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=308&amp;crn_in=6652&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">6652</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">308</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Laboratory</TD>
+<TD CLASS="dddefault">1.000</TD>
+<TD CLASS="dddefault">Computer Systems Lab.</TD>
+<TD CLASS="dddefault">M</TD>
+<TD NOWRAP CLASS="dddefault">09:35 AM-10:25 AM</TD>
+<TD CLASS="dddefault">47</TD>
+<TD CLASS="dddefault">28</TD>
+<TD CLASS="dddefault">19</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Joseph P Vybihal </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault">ENGTR 3120</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault"><ABBR title = Closed>C</ABBR></TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=310&amp;crn_in=730&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">730</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">310</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Operating Systems.</TD>
+<TD CLASS="dddefault">MWF</TD>
+<TD NOWRAP CLASS="dddefault">09:35 AM-10:25 AM</TD>
+<TD CLASS="dddefault">87</TD>
+<TD CLASS="dddefault">87</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Muthucumaru Maheswaran </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault">MDHAR G-10</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">T</TD>
+<TD NOWRAP CLASS="dddefault">09:35 AM-10:25 AM</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">Muthucumaru Maheswaran </TD>
+<TD CLASS="dddefault">04/14-04/14</TD>
+<TD CLASS="dddefault">MDHAR G-10</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="5427 201501" ID="action_id28">
+<LABEL for=action_id28><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=322&amp;crn_in=5427&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">5427</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">322</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">1.000</TD>
+<TD CLASS="dddefault">Introduction to C++.</TD>
+<TD CLASS="dddefault">R</TD>
+<TD NOWRAP CLASS="dddefault">01:35 PM-02:25 PM</TD>
+<TD CLASS="dddefault">168</TD>
+<TD CLASS="dddefault">94</TD>
+<TD CLASS="dddefault">74</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault">RPHYS 112</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD COLSPAN="22" CLASS="dddefault">NOTES: Waitlist section-use Quick Add. </TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="9182 201501" ID="action_id30">
+<LABEL for=action_id30><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=360&amp;crn_in=9182&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">9182</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">360</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Algorithm Design.</TD>
+<TD CLASS="dddefault">MW</TD>
+<TD NOWRAP CLASS="dddefault">01:05 PM-02:25 PM</TD>
+<TD CLASS="dddefault">98</TD>
+<TD CLASS="dddefault">66</TD>
+<TD CLASS="dddefault">32</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault">ENGMD 280</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD COLSPAN="22" CLASS="dddefault">NOTES: Waitlist section-use Quick Add.   Instructor Cai</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="9516 201501" ID="action_id32">
+<LABEL for=action_id32><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=361D2&amp;crn_in=9516&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">9516</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">361D2</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Software Engineering Project.</TD>
+<TD CLASS="dddefault">TR</TD>
+<TD NOWRAP CLASS="dddefault">02:35 PM-03:55 PM</TD>
+<TD CLASS="dddefault">95</TD>
+<TD CLASS="dddefault">60</TD>
+<TD CLASS="dddefault">35</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Jorg Andreas Kienzle </TD>
+<TD CLASS="dddefault">01/05-04/13</TD>
+<TD CLASS="dddefault">ENGTR 1100</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="12175 201501" ID="action_id34">
+<LABEL for=action_id34><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=362&amp;crn_in=12175&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">12175</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">362</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Honours Algorithm Design.</TD>
+<TD CLASS="dddefault">TR</TD>
+<TD NOWRAP CLASS="dddefault">08:35 AM-09:55 AM</TD>
+<TD CLASS="dddefault">50</TD>
+<TD CLASS="dddefault">41</TD>
+<TD CLASS="dddefault">9</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Hamed Hatami </TD>
+<TD CLASS="dddefault">01/05-04/13</TD>
+<TD CLASS="dddefault">ENGTR 2100</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="10590 201501" ID="action_id36">
+<LABEL for=action_id36><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=364&amp;crn_in=10590&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">10590</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">364</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Computer Tools for Life Sciences.</TD>
+<TD CLASS="dddefault">TRF</TD>
+<TD NOWRAP CLASS="dddefault">10:35 AM-11:25 AM</TD>
+<TD CLASS="dddefault">56</TD>
+<TD CLASS="dddefault">12</TD>
+<TD CLASS="dddefault">44</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Michael Trevor Hallett </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault">ENGTR 2110</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="4363 201501" ID="action_id38">
+<LABEL for=action_id38><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=396&amp;crn_in=4363&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">4363</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">396</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Project</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Undergraduate Research Project.</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">10</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">10</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Nathan Friedman </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD COLSPAN="22" CLASS="dddefault">NOTES: Department approval required.</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="736 201501" ID="action_id40">
+<LABEL for=action_id40><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=400&amp;crn_in=736&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">736</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">400</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Project</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Honours Project in Computer Science.</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">25</TD>
+<TD CLASS="dddefault">5</TD>
+<TD CLASS="dddefault">20</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Nathan Friedman </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD COLSPAN="22" CLASS="dddefault">NOTES: With permission only. </TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="8226 201501" ID="action_id42">
+<LABEL for=action_id42><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=401&amp;crn_in=8226&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">8226</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">401</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Independent Study</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Project in Biology and Computer Science.</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">15</TD>
+<TD CLASS="dddefault">11</TD>
+<TD CLASS="dddefault">4</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Derek Ruths </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="738 201501" ID="action_id44">
+<LABEL for=action_id44><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=421&amp;crn_in=738&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">738</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">421</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Database Systems.</TD>
+<TD CLASS="dddefault">WF</TD>
+<TD NOWRAP CLASS="dddefault">04:05 PM-05:25 PM</TD>
+<TD CLASS="dddefault">158</TD>
+<TD CLASS="dddefault">150</TD>
+<TD CLASS="dddefault">8</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault">ENGTR 0100</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">T</TD>
+<TD NOWRAP CLASS="dddefault">04:05 PM-05:25 PM</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">04/14-04/14</TD>
+<TD CLASS="dddefault">ENGTR 0100</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD COLSPAN="22" CLASS="dddefault">NOTES: Waitlist section-use Quick Add. </TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=424&amp;crn_in=6900&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">6900</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">424</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Artificial Intelligence.</TD>
+<TD CLASS="dddefault">MW</TD>
+<TD NOWRAP CLASS="dddefault">11:35 AM-12:55 PM</TD>
+<TD CLASS="dddefault">176</TD>
+<TD CLASS="dddefault">117</TD>
+<TD CLASS="dddefault">59</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Joelle Pineau </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault">LEA 26</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD COLSPAN="22" CLASS="dddefault">NOTES: Waitlist section-use Quick Add. </TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="14529 201501" ID="action_id47">
+<LABEL for=action_id47><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=520&amp;crn_in=14529&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">14529</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">520</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">4.000</TD>
+<TD CLASS="dddefault">Compiler Design.</TD>
+<TD CLASS="dddefault">TRF</TD>
+<TD NOWRAP CLASS="dddefault">10:35 AM-11:25 AM</TD>
+<TD CLASS="dddefault">30</TD>
+<TD CLASS="dddefault">19</TD>
+<TD CLASS="dddefault">11</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Laurie Hendren </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault">ENGMC 103</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="8222 201501" ID="action_id49">
+<LABEL for=action_id49><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=521&amp;crn_in=8222&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">8222</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">521</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">4.000</TD>
+<TD CLASS="dddefault">Modern Computer Games.</TD>
+<TD CLASS="dddefault">TR</TD>
+<TD NOWRAP CLASS="dddefault">11:35 AM-12:55 PM</TD>
+<TD CLASS="dddefault">78</TD>
+<TD CLASS="dddefault">71</TD>
+<TD CLASS="dddefault">7</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Clark Verbrugge </TD>
+<TD CLASS="dddefault">01/05-04/13</TD>
+<TD CLASS="dddefault">ENGTR 1100</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="11794 201501" ID="action_id51">
+<LABEL for=action_id51><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=523&amp;crn_in=11794&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">11794</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">523</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Language-based Security.</TD>
+<TD CLASS="dddefault">MW</TD>
+<TD NOWRAP CLASS="dddefault">10:05 AM-11:25 AM</TD>
+<TD CLASS="dddefault">65</TD>
+<TD CLASS="dddefault">24</TD>
+<TD CLASS="dddefault">41</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Brigitte Pientka </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault">ENGTR 2100</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="8964 201501" ID="action_id53">
+<LABEL for=action_id53><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=527&amp;crn_in=8964&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">8964</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">527</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Logic and Computation.</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">78</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">78</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">Temporarily closed</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="11808 201501" ID="action_id55">
+<LABEL for=action_id55><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=529&amp;crn_in=11808&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">11808</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">529</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">4.000</TD>
+<TD CLASS="dddefault">Software Architecture.</TD>
+<TD CLASS="dddefault">MW</TD>
+<TD NOWRAP CLASS="dddefault">11:35 AM-12:55 PM</TD>
+<TD CLASS="dddefault">81</TD>
+<TD CLASS="dddefault">30</TD>
+<TD CLASS="dddefault">51</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Joseph P Vybihal </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault">ENGTR 1100</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="11318 201501" ID="action_id57">
+<LABEL for=action_id57><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=531&amp;crn_in=11318&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">11318</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">531</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Advanced Theory of Computation.</TD>
+<TD CLASS="dddefault">MW</TD>
+<TD NOWRAP CLASS="dddefault">02:35 PM-03:55 PM</TD>
+<TD CLASS="dddefault">40</TD>
+<TD CLASS="dddefault">13</TD>
+<TD CLASS="dddefault">27</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Denis Therien </TD>
+<TD CLASS="dddefault">01/05-04/13</TD>
+<TD CLASS="dddefault">RPHYS 115</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="11797 201501" ID="action_id59">
+<LABEL for=action_id59><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=547&amp;crn_in=11797&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">11797</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">547</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">4.000</TD>
+<TD CLASS="dddefault">Cryptography and Data Security.</TD>
+<TD CLASS="dddefault">TR</TD>
+<TD NOWRAP CLASS="dddefault">01:05 PM-02:25 PM</TD>
+<TD CLASS="dddefault">78</TD>
+<TD CLASS="dddefault">27</TD>
+<TD CLASS="dddefault">51</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Claude Crepeau </TD>
+<TD CLASS="dddefault">01/05-04/13</TD>
+<TD CLASS="dddefault">ENGTR 1100</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="14160 201501" ID="action_id61">
+<LABEL for=action_id61><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=557&amp;crn_in=14160&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">14160</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">557</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Fundamentals of Computer Graphics.</TD>
+<TD CLASS="dddefault">TR</TD>
+<TD NOWRAP CLASS="dddefault">02:35 PM-03:55 PM</TD>
+<TD CLASS="dddefault">100</TD>
+<TD CLASS="dddefault">91</TD>
+<TD CLASS="dddefault">9</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Michael Langer </TD>
+<TD CLASS="dddefault">01/05-04/13</TD>
+<TD CLASS="dddefault">ENGTR 0100</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="10716 201501" ID="action_id63">
+<LABEL for=action_id63><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=558&amp;crn_in=10716&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">10716</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">558</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Fundamentals of Computer Vision.</TD>
+<TD CLASS="dddefault">MW</TD>
+<TD NOWRAP CLASS="dddefault">11:35 AM-12:55 PM</TD>
+<TD CLASS="dddefault">65</TD>
+<TD CLASS="dddefault">5</TD>
+<TD CLASS="dddefault">60</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Kaleem Siddiqi </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault">ENGTR 1080</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="11804 201501" ID="action_id65">
+<LABEL for=action_id65><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=559&amp;crn_in=11804&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">11804</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">559</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">4.000</TD>
+<TD CLASS="dddefault">Fundamentals of Computer Animation.</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">34</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">34</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">Temporarily closed</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="11218 201501" ID="action_id67">
+<LABEL for=action_id67><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=567&amp;crn_in=11218&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">11218</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">567</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Discrete Optimization 2.</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">28</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">28</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">Cancelled</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="9441 201501" ID="action_id69">
+<LABEL for=action_id69><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=575&amp;crn_in=9441&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">9441</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">575</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Fundamentals of Distributed Algorithms.</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">25</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">25</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">Cancelled</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="11799 201501" ID="action_id71">
+<LABEL for=action_id71><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=598&amp;crn_in=11799&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">11799</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">598</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Topics Course</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Topics in Computer Science 1.</TD>
+<TD CLASS="dddefault">TR</TD>
+<TD NOWRAP CLASS="dddefault">04:05 PM-05:25 PM</TD>
+<TD CLASS="dddefault">33</TD>
+<TD CLASS="dddefault">2</TD>
+<TD CLASS="dddefault">31</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">01/05-04/13</TD>
+<TD CLASS="dddefault">ENGTR 2120</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="12176 201501" ID="action_id73">
+<LABEL for=action_id73><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=599&amp;crn_in=12176&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">12176</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">599</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Topics Course</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Topics in Computer Science 2.</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">20</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">20</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">Temporarily closed</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="4459 201501" ID="action_id75">
+<LABEL for=action_id75><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=601&amp;crn_in=4459&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">4459</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">601</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Topics Course</TD>
+<TD CLASS="dddefault">2.000</TD>
+<TD CLASS="dddefault">Thesis Literature Review.</TD>
+<TD CLASS="dddefault">F</TD>
+<TD NOWRAP CLASS="dddefault">02:35 PM-03:25 PM</TD>
+<TD CLASS="dddefault">50</TD>
+<TD CLASS="dddefault">1</TD>
+<TD CLASS="dddefault">49</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Gregory L Dudek , Michael Langer , Prakash Panangaden </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault">ENGMC 12</TD>
+<TD CLASS="dddefault">Temporarily closed</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">T</TD>
+<TD NOWRAP CLASS="dddefault">02:35 PM-03:25 PM</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault">Gregory L Dudek , Michael Langer , Prakash Panangaden </TD>
+<TD CLASS="dddefault">04/14-04/14</TD>
+<TD CLASS="dddefault">ENGMC 12</TD>
+<TD CLASS="dddefault">Temporarily closed</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="10620 201501" ID="action_id77">
+<LABEL for=action_id77><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=610&amp;crn_in=10620&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">10620</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">610</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">4.000</TD>
+<TD CLASS="dddefault">Information Structures 1.</TD>
+<TD CLASS="dddefault">TR</TD>
+<TD NOWRAP CLASS="dddefault">08:35 AM-09:55 AM</TD>
+<TD CLASS="dddefault">22</TD>
+<TD CLASS="dddefault">1</TD>
+<TD CLASS="dddefault">21</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Luc P Devroye </TD>
+<TD CLASS="dddefault">01/05-04/13</TD>
+<TD CLASS="dddefault">ENGTR 0060</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="3620 201501" ID="action_id79">
+<LABEL for=action_id79><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=616D2&amp;crn_in=3620&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">3620</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">616D2</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Seminar</TD>
+<TD CLASS="dddefault">1.500</TD>
+<TD CLASS="dddefault">Bioinformatics Seminar.</TD>
+<TD CLASS="dddefault">M</TD>
+<TD NOWRAP CLASS="dddefault">10:05 AM-11:25 AM</TD>
+<TD CLASS="dddefault">30</TD>
+<TD CLASS="dddefault">5</TD>
+<TD CLASS="dddefault">25</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Michael Trevor Hallett </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault">ENGTR 0060</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="4644 201501" ID="action_id81">
+<LABEL for=action_id81><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=616N1&amp;crn_in=4644&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">4644</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">616N1</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Seminar</TD>
+<TD CLASS="dddefault">1.500</TD>
+<TD CLASS="dddefault">Bioinformatics Seminar.</TD>
+<TD CLASS="dddefault">M</TD>
+<TD NOWRAP CLASS="dddefault">10:05 AM-11:25 AM</TD>
+<TD CLASS="dddefault">30</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">30</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Michael Trevor Hallett </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault">ENGTR 0060</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="3994 201501" ID="action_id83">
+<LABEL for=action_id83><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=618&amp;crn_in=3994&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">3994</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">618</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Bioinformatics: Functional Genomics.</TD>
+<TD CLASS="dddefault">T</TD>
+<TD NOWRAP CLASS="dddefault">02:35 PM-05:25 PM</TD>
+<TD CLASS="dddefault">27</TD>
+<TD CLASS="dddefault">3</TD>
+<TD CLASS="dddefault">24</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Michael Trevor Hallett </TD>
+<TD CLASS="dddefault">01/05-04/13</TD>
+<TD CLASS="dddefault">ENGTR 2110</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="10621 201501" ID="action_id85">
+<LABEL for=action_id85><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=621&amp;crn_in=10621&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">10621</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">621</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">4.000</TD>
+<TD CLASS="dddefault">Program Analysis and Transformations.</TD>
+<TD CLASS="dddefault">MW</TD>
+<TD NOWRAP CLASS="dddefault">01:05 PM-02:25 PM</TD>
+<TD CLASS="dddefault">20</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">20</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Laurie Hendren </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault">ENGMC 103</TD>
+<TD CLASS="dddefault">Cancelled</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="9652 201501" ID="action_id87">
+<LABEL for=action_id87><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=642&amp;crn_in=9652&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">9652</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">642</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">4.000</TD>
+<TD CLASS="dddefault">Numerical Estimation Methods.</TD>
+<TD CLASS="dddefault">TR</TD>
+<TD NOWRAP CLASS="dddefault">10:05 AM-11:25 AM</TD>
+<TD CLASS="dddefault">20</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">20</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Xiao-Wen Chang </TD>
+<TD CLASS="dddefault">01/05-04/13</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">Temporarily closed</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="10618 201501" ID="action_id89">
+<LABEL for=action_id89><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=647&amp;crn_in=10618&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">10618</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">647</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">4.000</TD>
+<TD CLASS="dddefault">Advanced Cryptography.</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">20</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">20</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">Cancelled</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="13550 201501" ID="action_id91">
+<LABEL for=action_id91><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=652&amp;crn_in=13550&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">13550</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">652</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">4.000</TD>
+<TD CLASS="dddefault">Machine Learning.</TD>
+<TD CLASS="dddefault">TR</TD>
+<TD NOWRAP CLASS="dddefault">08:35 AM-09:55 AM</TD>
+<TD CLASS="dddefault">70</TD>
+<TD CLASS="dddefault">4</TD>
+<TD CLASS="dddefault">66</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Doina Precup </TD>
+<TD CLASS="dddefault">01/05-04/13</TD>
+<TD CLASS="dddefault">ENGTR 1080</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="9190 201501" ID="action_id93">
+<LABEL for=action_id93><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=667&amp;crn_in=9190&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">9190</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">667</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">4.000</TD>
+<TD CLASS="dddefault">Software Fault Tolerance.</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">25</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">25</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">Cancelled</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="4416 201501" ID="action_id95">
+<LABEL for=action_id95><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=669D2&amp;crn_in=4416&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">4416</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">669D2</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Seminar</TD>
+<TD CLASS="dddefault">0.500</TD>
+<TD CLASS="dddefault">Computational Science Engineering Seminar.</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">5</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">5</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Xiao-Wen Chang </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">Cancelled</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="12961 201501" ID="action_id97">
+<LABEL for=action_id97><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=680&amp;crn_in=12961&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">12961</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">680</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">4.000</TD>
+<TD CLASS="dddefault">Mining Biological Sequences.</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">25</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">25</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Mathieu Blanchette </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">Temporarily closed</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="9983 201501" ID="action_id99">
+<LABEL for=action_id99><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=691&amp;crn_in=9983&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">9983</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">691</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Thesis Course</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Thesis Research 1.</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">50</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">50</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Xue Liu </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="9987 201501" ID="action_id101">
+<LABEL for=action_id101><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=693&amp;crn_in=9987&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">9987</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">693</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Project</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Research Project 1.</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">50</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">50</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Xue Liu </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="753 201501" ID="action_id103">
+<LABEL for=action_id103><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=694&amp;crn_in=753&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">753</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">694</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Project</TD>
+<TD CLASS="dddefault">6.000</TD>
+<TD CLASS="dddefault">Research Project 2.</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">50</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">50</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Xue Liu </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="754 201501" ID="action_id105">
+<LABEL for=action_id105><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=695&amp;crn_in=754&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">754</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">695</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Project</TD>
+<TD CLASS="dddefault">6.000</TD>
+<TD CLASS="dddefault">Research Project 3.</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">50</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">50</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Xue Liu </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="9984 201501" ID="action_id107">
+<LABEL for=action_id107><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=696&amp;crn_in=9984&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">9984</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">696</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Thesis Course</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Thesis Research 2.</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">50</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">50</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Xue Liu </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="9985 201501" ID="action_id109">
+<LABEL for=action_id109><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=697&amp;crn_in=9985&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">9985</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">697</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Thesis Course</TD>
+<TD CLASS="dddefault">4.000</TD>
+<TD CLASS="dddefault">Thesis Research 3.</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">50</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">50</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Xue Liu </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="755 201501" ID="action_id111">
+<LABEL for=action_id111><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=698&amp;crn_in=755&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">755</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">698</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Thesis Course</TD>
+<TD CLASS="dddefault">10.000</TD>
+<TD CLASS="dddefault">Thesis Research 4.</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">50</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">50</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Xue Liu </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="756 201501" ID="action_id113">
+<LABEL for=action_id113><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=699&amp;crn_in=756&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">756</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">699</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Thesis Course</TD>
+<TD CLASS="dddefault">12.000</TD>
+<TD CLASS="dddefault">Thesis Research 5.</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">50</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">50</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Xue Liu </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="3064 201501" ID="action_id115">
+<LABEL for=action_id115><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=700&amp;crn_in=3064&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">3064</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">700</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Comprehensive Exam</TD>
+<TD CLASS="dddefault">0.000</TD>
+<TD CLASS="dddefault">Ph.D. Comprehensive Examination.</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">20</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">20</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Xiao-Wen Chang </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="757 201501" ID="action_id117">
+<LABEL for=action_id117><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=701&amp;crn_in=757&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">757</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">701</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Thesis Course</TD>
+<TD CLASS="dddefault">3.000</TD>
+<TD CLASS="dddefault">Thesis Proposal and Area Examination.</TD>
+<TD CLASS="dddefault">&nbsp;</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">20</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">20</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Xiao-Wen Chang </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault"><ABBR title = Closed>C</ABBR></TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=760&amp;crn_in=13585&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">13585</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">760</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">4.000</TD>
+<TD CLASS="dddefault">Advanced Topics Theory 1.</TD>
+<TD COLSPAN="2" CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">Temporarily closed</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="14148 201501" ID="action_id120">
+<LABEL for=action_id120><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=760&amp;crn_in=14148&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">14148</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">760</TD>
+<TD CLASS="dddefault">002</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">4.000</TD>
+<TD CLASS="dddefault">Advanced Topics Theory 1.</TD>
+<TD CLASS="dddefault">MW</TD>
+<TD NOWRAP CLASS="dddefault">08:35 AM-09:55 AM</TD>
+<TD CLASS="dddefault">20</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">20</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Hamed Hatami </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault">ENGMC 103</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="11615 201501" ID="action_id122">
+<LABEL for=action_id122><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=762&amp;crn_in=11615&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">11615</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">762</TD>
+<TD CLASS="dddefault">002</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">4.000</TD>
+<TD CLASS="dddefault">Advanced Topics Programming 1.</TD>
+<TD CLASS="dddefault">MW</TD>
+<TD NOWRAP CLASS="dddefault">11:35 AM-12:55 PM</TD>
+<TD CLASS="dddefault">20</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">20</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Martin Robillard </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault">ENGMC 103</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="13789 201501" ID="action_id124">
+<LABEL for=action_id124><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=764&amp;crn_in=13789&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">13789</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">764</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">4.000</TD>
+<TD CLASS="dddefault">Advanced Topics Systems 1.</TD>
+<TD CLASS="dddefault">MW</TD>
+<TD NOWRAP CLASS="dddefault">02:35 PM-03:55 PM</TD>
+<TD CLASS="dddefault">20</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">20</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Wenbo He </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault">ENGMC 103</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="8065 201501" ID="action_id126">
+<LABEL for=action_id126><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=765&amp;crn_in=8065&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">8065</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">765</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">4.000</TD>
+<TD CLASS="dddefault">Advanced Topics Systems 2.</TD>
+<TD CLASS="dddefault">MW</TD>
+<TD NOWRAP CLASS="dddefault">08:35 AM-09:55 AM</TD>
+<TD CLASS="dddefault">16</TD>
+<TD CLASS="dddefault">1</TD>
+<TD CLASS="dddefault">15</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Gregory L Dudek </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault">ENGMC 320</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="8290 201501" ID="action_id128">
+<LABEL for=action_id128><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=766&amp;crn_in=8290&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">8290</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">766</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">4.000</TD>
+<TD CLASS="dddefault">Advanced Topics Applications 1.</TD>
+<TD CLASS="dddefault">MW</TD>
+<TD NOWRAP CLASS="dddefault">10:05 AM-11:25 AM</TD>
+<TD CLASS="dddefault">20</TD>
+<TD CLASS="dddefault">1</TD>
+<TD CLASS="dddefault">19</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Kaleem Siddiqi </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault"><ABBR title = "To Be Announced">TBA</ABBR></TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault">
+<INPUT TYPE="checkbox" NAME="sel_crn" VALUE="11806 201501" ID="action_id130">
+<LABEL for=action_id130><SPAN class=fieldlabeltextinvisible>add to worksheet</SPAN></LABEL>
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501">
+</TD>
+<TD CLASS="dddefault"><A HREF="/pban1/bwckschd.p_disp_listcrse?term_in=201501&amp;subj_in=COMP&amp;crse_in=767&amp;crn_in=11806&amp;search_mode_in=NON_NT" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">11806</A></TD>
+<TD CLASS="dddefault">COMP</TD>
+<TD CLASS="dddefault">767</TD>
+<TD CLASS="dddefault">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault">4.000</TD>
+<TD CLASS="dddefault">Advanced Topics: Applications 2.</TD>
+<TD CLASS="dddefault">MW</TD>
+<TD NOWRAP CLASS="dddefault">04:05 PM-05:25 PM</TD>
+<TD CLASS="dddefault">20</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">20</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">0</TD>
+<TD CLASS="dddefault">Derek Ruths </TD>
+<TD CLASS="dddefault">01/05-04/14</TD>
+<TD CLASS="dddefault">ENGMC 103</TD>
+<TD CLASS="dddefault">Active</TD>
+</TR>
+<TR>
+<TD COLSPAN="23" CLASS="dddefault">&nbsp;</TD>
+</TR>
+</TABLE>
+<BR>
+<INPUT TYPE="submit" NAME="ADD_BTN" VALUE="Register">
+<INPUT TYPE="submit" NAME="ADD_BTN" VALUE="Add to WorkSheet">
+<INPUT TYPE="submit" NAME="ADD_BTN" VALUE="Class Search">
+</FORM>
+
+<!--  ** START OF twbkwbis.P_CloseDoc **  -->
+<TABLE  CLASS="plaintable" SUMMARY="This is table displays line separator at end of the page."
+                                             WIDTH="100%" cellSpacing=0 cellPadding=0 border=0><TR><TD class=bgtabon width="100%" colSpan=2><IMG SRC="/wtlgifs/web_transparent.gif" ALT="Transparent Image" CLASS="headerImg" TITLE="Transparent Image"  NAME="web_transparent" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=3 WIDTH=10></TD></TR></TABLE>
+<A HREF="#top" onMouseover="window.status='Skip to top of page'; return true" onMouseout="window.status=''; return true" OnFocus="window.status='Skip to top of page'; return true" onBlur="window.status=''; return true" class="skiplinks">Skip to top of page</A>
+<DIV class="pagefooterdiv">
+<SPAN class="releasetext">Release: 8.4 / 1.37</SPAN>
+</DIV>
+<DIV class="poweredbydiv">
+</DIV>
+<DIV class="div1"></DIV>
+<DIV class="div2"></DIV>
+<DIV class="div3"></DIV>
+<DIV class="div4"></DIV>
+<DIV class="div5"></DIV>
+<DIV class="div6"></DIV>
+</DIV>
+</BODY>
+</HTML>
+

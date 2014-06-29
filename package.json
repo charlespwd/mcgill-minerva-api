@@ -35,6 +35,7 @@
     "test": "grunt"
   },
   "dependencies": {
+    "cheerio": "^0.17.0",
     "lodash": "^2.4.1",
     "q": "^1.0.1",
     "request": "^2.36.0"

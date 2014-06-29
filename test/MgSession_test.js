@@ -75,8 +75,8 @@ describe("MgSession", function () {
     it("should allow choosing a course section", function(done) {
       var selection = { dep: 'COMP', number: '250' };
       sess.selectCourses(selection)
-      .then(function(promised_obj) {
-        expect(promised_obj.body.indexOf('Classes are cancelled for all')).to.be.greaterThan(0);
+      .then(function(courses) {
+        expect(courses).to.be.an.Array;
         done();
       }).fail(function (err) {
         expect(err).to.not.exist;
@@ -86,8 +86,8 @@ describe("MgSession", function () {
 
     it("should return a page that contains 'Classes are cancelled for all'", function (done) {
       sess.selectCourses()
-      .then(function(promised_obj) {
-        expect(promised_obj.body.indexOf('Classes are cancelled for all')).to.be.greaterThan(0);
+      .then(function(courses) {
+        expect(courses).to.be.an.Array;
         done();
       }).fail(function(err) {
         console.log(err);
