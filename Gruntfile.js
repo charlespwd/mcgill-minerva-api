@@ -65,7 +65,7 @@ module.exports = function (grunt) {
       },
       test: {
         files: '<%= jshint.test.src %>',
-        tasks: ['newer:jshint:test', 'mochaTest']
+        tasks: ['newer:jshint:test', 'newer:mochaTest:test']
       }
     }
   });

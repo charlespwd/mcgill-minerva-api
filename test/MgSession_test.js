@@ -45,7 +45,7 @@ describe("MgSession", function () {
     it("should allow logged in actions", function (done) {
       sess.getTranscript()
       .then(function(content) {
-        expect(content).to.be.a.String;
+        expect(content).to.be.an.Array;
         done();
       }, function(err) {
         console.error(err);
@@ -55,28 +55,15 @@ describe("MgSession", function () {
     });
   });
 
-  describe("#selectTerm", function () { 
-    this.timeout(5000);
-    it("should allow selection of term");
-    it("should return a page that contains OPTION VALUE='COMP'", function (done) {
-      sess.selectTerm()
-      .then(function(html) {
-        expect(html).to.match(/(OPTION VALUE="COMP")/g);
-        done();
-      }).fail(function(err) {
-        expect(err).to.not.exist;
-        done();
-      });
-    });
-  });
-
-  describe("#selectCourses", function() {
+  describe("#getCourses", function() {
     this.timeout(7000);
     it("should allow choosing a course section", function(done) {
       var selection = { dep: 'COMP', number: '250' };
-      sess.selectCourses(selection)
+      sess.getCourses(selection)
       .then(function(courses) {
         expect(courses).to.be.an.Array;
+        expect(courses[0].Subj).to.equal('COMP');
+        expect(courses[0].Crse).to.equal('250');
         done();
       }).fail(function (err) {
         expect(err).to.not.exist;
@@ -85,7 +72,7 @@ describe("MgSession", function () {
     });
 
     it("should return a page that contains 'Classes are cancelled for all'", function (done) {
-      sess.selectCourses()
+      sess.getCourses()
       .then(function(courses) {
         expect(courses).to.be.an.Array;
         done();
