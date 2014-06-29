@@ -1,5 +1,4 @@
 {
-  "curly": true,
   "eqeqeq": true,
   "immed": true,
   "latedef": true,
@@ -10,5 +9,17 @@
   "unused": true,
   "boss": true,
   "eqnull": true,
-  "node": true
+  "browser": true,
+  "node": true,
+  "expr": true,
+  "predef": [
+    "jQuery",
+    "describe",
+    "it",
+    "before",
+    "beforeEach",
+    "after",
+    "afterEach",
+    "angular"
+  ]
 }
