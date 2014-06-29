@@ -4,12 +4,12 @@
 var expect = require('chai').expect;
 var q = require('q');
 
-var MgSession = require('../lib/MgSession');
+var Minerva = require('../minerva');
 
-describe("MgSession", function () { 
+describe("Minerva", function () { 
   var sess;
   beforeEach(function() {
-    sess = new MgSession();
+    sess = new Minerva();
   });
 
   describe("#login", function () { 
@@ -41,17 +41,21 @@ describe("MgSession", function () {
         done();
       }); 
     });
+  });
 
-    it("should allow logged in actions", function (done) {
+  describe("#getTranscript", function() {
+    it("should get a list of courses and grades", function (done) {
       sess.getTranscript()
       .then(function(content) {
         expect(content).to.be.an.Array;
+        expect(content[0].Subj).to.exist;
+        expect(content[0].Grade).to.exist;
         done();
       }, function(err) {
         console.error(err);
         expect(err).to.not.exist;
         done();
-      }).done();
+      });
     });
   });
 

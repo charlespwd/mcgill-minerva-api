@@ -1,7 +1,7 @@
 {
   "name": "mcgill-minerva-api",
   "version": "0.0.0",
-  "main": "lib/??",
+  "main": "minerva.js",
   "description": "A javascript abstraction layer over McGill's awful minerva. ",
   "homepage": "https://github.com/charlespwd/mcgill-courses-api",
   "bugs": "https://github.com/charlespwd/mcgill-courses-api/issues",

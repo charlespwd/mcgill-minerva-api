@@ -7,12 +7,13 @@ Install the module with: `npm install mcgill-minerva-api`
 
 ```javascript
 var Minerva = require('mcgill-minerva-api');
-var session = new Minerva(username, password); // or store 'em in environment MG_USER & MG_PASS
-session.getCourses({ 
-  dep: 'COMP',
-  number: '250', 
-  season: 'w', 
-  year: '2015' 
+
+var minerva = new Minerva(username, password); // or store 'em in environment MG_USER & MG_PASS
+minerva.getCourses({ 
+    dep: 'COMP',
+    number: '250', 
+    season: 'w', 
+    year: '2015' 
   }).then(function(courses) {
     console.log(courses);
       // => [{ 
@@ -33,7 +34,7 @@ session.getCourses({
 
 ## Documentation
 `Minerva`'s functions are promises, see Kris Kowal's very excellent [Q](https://github.com/kriskowal/q) module. 
-Therefore, to use the results of the function you need to chain chain a `then`.
+Therefore, to use the results of the function you need to chain chain a `then` with a callback.
   * `getTranscript()`: returns a promise for an array of courses. Course example:  
 ```javascript
 {
@@ -66,9 +67,6 @@ Therefore, to use the results of the function you need to chain chain a `then`.
   "Status": 'Active'
 }
 ```
-
-## Examples
-_(Coming soon)_
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
