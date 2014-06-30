@@ -1,6 +1,9 @@
 # mcgill-minerva-api
 
-A javascript abstraction layer over McGill's awful minerva. 
+A javascript abstraction layer over McGill's awful minerva. It can:
+ * return your unofficial transcript as json
+ * search for courses (by dep, number and semester)
+ * add/drop courses  
 
 ## Getting Started
 Install the module with: `npm install mcgill-minerva-api`
@@ -48,7 +51,7 @@ Therefore, to use the results of the function you need to chain chain a `then` w
 }
 ```
   * `getCourses(options)`: returns a promise for an array of courses 
-      searched on minerva (for regitration). `options` can take :
+      searched on minerva (for regitration). `options` takes :
       + `dep:`, e.g. "MATH",
       + `number`, e.g. "280",
       + `season`, takes `w`, `s`, or `f`. 
@@ -67,6 +70,12 @@ Therefore, to use the results of the function you need to chain chain a `then` w
   "Status": 'Active'
 }
 ```
+  * `addCourses(options)`: returns a promise for registration of courses by crn. 
+      `options` takes: 
+      + `season`, `w`, `s`, or `f`;
+      + `year`, e.g. 2015;
+      + `crn`, crn string or array of crns (course reference numbers)
+  * `dropCourses(option)`: returns a promise for the opposite of add courses.
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
