@@ -7,6 +7,8 @@ var mgParser = require('../lib/mgParser');
 var mock_transcript = fs.readFileSync('./test/mock-transcript.html', { encoding: 'utf8'}); 
 var mock_courses = fs.readFileSync('test/mock_courses_page.html', {encoding: 'utf8'});
 var mock_no_courses = fs.readFileSync('test/mock_no_courses_page.html', {encoding: 'utf8'});
+var mock_registered_courses = fs.readFileSync('test/mock_registered_courses.html', {encoding: 'utf8'});
+var mock_registration_error = fs.readFileSync('test/mock_registration_error.html', {encoding: 'utf8'});
 
 describe("mgParser", function () { 
 
@@ -41,6 +43,22 @@ describe("mgParser", function () {
       var courses = mgParser.parseCourses(mock_no_courses);
       expect(courses).to.be.an.Array;
       expect(courses.length).to.equal(0);
+    });
+  });
+
+  describe("#parseRegisteredCourses", function () { 
+    it("should extract CRNs, Statuses, Subj, Crse, Sec, Type, Credits", function (done) {
+      var courses = mgParser.parseRegisteredCourses(mock_registered_courses);
+      expect(courses).to.be.an.Array;
+      expect(courses[0]).to.include.keys('CRN', 'Status', 'Subj', 'Crse', 'Sec', 'Type', 'Credits'); 
+      done();
+    });
+
+    it("should extract errors and map the CRNs correctly", function (done) {
+      var courses = mgParser.parseRegisteredCourses(mock_registration_error);
+      expect(courses).to.be.an.Array;
+      expect(courses[courses.length - 1]).to.include.keys('Title'); 
+      done();
     });
   });
 });

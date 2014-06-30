@@ -1,0 +1,415 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML lang="en">
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<META HTTP-EQUIV="Pragma" NAME="Cache-Control" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" NAME="Cache-Control" CONTENT="no-cache">
+<LINK REL="stylesheet" HREF="/css/web_defaultapp.css" TYPE="text/css">
+<LINK REL="stylesheet" HREF="/css/web_defaultprint.css" TYPE="text/css" media="print">
+<TITLE>Quick Add or Drop Course Sections</TITLE>
+<META HTTP-EQUIV="Content-Script-Type" NAME="Default_Script_Language" CONTENT="text/javascript">
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+<!-- Hide JavaScript from older browsers 
+var submitcount=0;
+function checkSubmit() {
+if (submitcount == 0)
+   {
+   submitcount++;
+   return true;
+   }
+else
+   {
+alert("Your changes have already been submitted.");
+   return false;
+   }
+}
+//  End script hiding -->
+</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+<!-- Hide JavaScript from older browsers 
+//  Function to open a window
+function windowOpen(window_url) {
+   helpWin = window.open(window_url,'','toolbar=yes,status=no,scrollbars=yes,menubar=yes,resizable=yes,directories=no,location=no,width=350,height=400');
+   if (document.images) { 
+       if (helpWin) helpWin.focus()
+   }
+}
+//  End script hiding -->
+</SCRIPT>
+</HEAD>
+<BODY>
+<DIV class="headerwrapperdiv">
+<DIV class="pageheaderdiv1">
+<A HREF="#main_content" onMouseover="window.status='Go to Main Content'; return true" onMouseout="window.status=''; return true" OnFocus="window.status='Go to Main Content'; return true" onBlur="window.status=''; return true" class="skiplinks">Go to Main Content</A>
+<H1>Minerva</H1></DIV><DIV class="headerlinksdiv">
+<SPAN class="pageheaderlinks2">
+<MAP NAME="Module_Navigation_Links_H" title="Module Navigation Links">
+<p>
+<A HREF="#skip_Module_Navigation_Links_H" onMouseover="window.status='Skip Module Navigation Links'; return true" onMouseout="window.status=''; return true" onFocus="window.status='Skip Module Navigation Links'; return true" onBlur="window.status=''; return true"  class="skiplinks">Skip Module Navigation Links</A>
+<TABLE  CLASS="plaintable" SUMMARY="This is main table for displaying Tab Items."
+                          WIDTH="100%" cellSpacing=0 cellPadding=0 border=0>
+<TR>
+<TD CLASS="pldefault">
+<TABLE  CLASS="plaintable" SUMMARY="This table displays Tab Items."
+                 cellSpacing=0 cellPadding=0 border=0>
+<TR>
+<td class=taboff  height=22>
+<A HREF="/pban1/twbkwbis.P_GenMenu?name=bmenu.P_MainMnu" onMouseover="window.status='Main menu'; return true" onMouseout="window.status=''; return true" onFocus="window.status='Main menu'; return true" onBlur="window.status=''; return true" >MAIN MENU</A>
+</TD>
+<TD class=bgtaboff height=22 vAlign=top align=right>
+<IMG SRC="/wtlgifs/web_tab_corner_right.gif" ALT="Tab Corner Right" CLASS="headerImg" TITLE="Tab Corner Right"  NAME="web_tab_corner_right" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=20 WIDTH=8>
+</TD>
+<td class=taboff  height=22>
+<A HREF="/pban1/twbkwbis.P_GenMenu?name=bmenu.P_PersonalMnu" onMouseover="window.status='Personal Menu'; return true" onMouseout="window.status=''; return true" onFocus="window.status='Personal Menu'; return true" onBlur="window.status=''; return true" >Personal</A>
+</TD>
+<TD class=bgtaboff height=22 vAlign=top align=right>
+<IMG SRC="/wtlgifs/web_tab_corner_right.gif" ALT="Tab Corner Right" CLASS="headerImg" TITLE="Tab Corner Right"  NAME="web_tab_corner_right" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=20 WIDTH=8>
+</TD>
+<td class=tabon height=22>
+<A HREF="/pban1/twbkwbis.P_GenMenu?name=bmenu.P_StuMainMnu" onMouseover="window.status='Student Menu'; return true" onMouseout="window.status=''; return true" onFocus="window.status='Student Menu'; return true" onBlur="window.status=''; return true" >Student</A>
+</TD>
+<TD class=bgtabon height=22 vAlign=top align=right>
+<IMG SRC="/wtlgifs/web_tab_corner_right.gif" ALT="Tab Corner Right" CLASS="headerImg" TITLE="Tab Corner Right"  NAME="web_tab_corner_right" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=20 WIDTH=8>
+</TD>
+<td class=taboff  height=22>
+<A HREF="/pban1/twbkwbis.P_GenMenu?name=bmenu.P_ApplMnu" onMouseover="window.status='Applicant Menu'; return true" onMouseout="window.status=''; return true" onFocus="window.status='Applicant Menu'; return true" onBlur="window.status=''; return true" >Applicant</A>
+</TD>
+<TD class=bgtaboff height=22 vAlign=top align=right>
+<IMG SRC="/wtlgifs/web_tab_corner_right.gif" ALT="Tab Corner Right" CLASS="headerImg" TITLE="Tab Corner Right"  NAME="web_tab_corner_right" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=20 WIDTH=8>
+</TD>
+<td class=taboff  height=22>
+<A HREF="/pban1/twbkwbis.P_GenMenu?name=bmenu.P_BsacMnu" onMouseover="window.status='Financial Aid/Awards'; return true" onMouseout="window.status=''; return true" onFocus="window.status='Financial Aid/Awards'; return true" onBlur="window.status=''; return true" >Financial Aid/Awards</A>
+</TD>
+<TD class=bgtaboff height=22 vAlign=top align=right>
+<IMG SRC="/wtlgifs/web_tab_corner_right.gif" ALT="Tab Corner Right" CLASS="headerImg" TITLE="Tab Corner Right"  NAME="web_tab_corner_right" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=20 WIDTH=8>
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+<TR>
+<TD class=bgtabon width="100%" colSpan=2><IMG SRC="/wtlgifs/web_transparent.gif" ALT="Transparent Image" CLASS="headerImg" TITLE="Transparent Image"  NAME="web_transparent" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=3 WIDTH=10></TD></TR></TABLE>
+</MAP>
+</SPAN>
+<a name="skip_Module_Navigation_Links_H"></a>
+</DIV>
+<TABLE  CLASS="plaintable" SUMMARY="This table displays Menu Items and Banner Search textbox."
+         WIDTH="100%">
+<TR>
+<TD CLASS="pldefault">
+<DIV class="headerlinksdiv2">
+<FORM ACTION="/pban1/twbksrch.P_ShowResults" METHOD="POST">
+Search
+<SPAN class=fieldlabeltextinvisible><LABEL for=keyword_in_id><SPAN class=fieldlabeltext>Search</SPAN></LABEL></SPAN>
+<INPUT TYPE="text" NAME="KEYWRD_IN" SIZE="20" MAXLENGTH="65" ID="keyword_in_id">
+<INPUT TYPE="submit" VALUE="Go">
+</FORM>
+</div>
+</TD>
+<TD CLASS="pldefault"><p class="rightaligntext">
+<SPAN class="pageheaderlinks">
+<A HREF="/pban1/twbkwbis.P_GenMenu?name=bmenu.P_RegMnu"  class="submenulinktext2" id="ssbbackurl">MENU</A>
+|
+<A HREF="/pban1/twbksite.P_DispSiteMap?menu_name_in=bmenu.P_MainMnu&amp;depth_in=2&amp;columns_in=3" accesskey="2" class="submenulinktext2">SITE MAP</A>
+|
+<A HREF="http://www.is.mcgill.ca/whelp/sis_help/rg_add_drop.htm" accesskey="H" onClick="popup = window.open('http://www.is.mcgill.ca/whelp/sis_help/rg_add_drop.htm', 'PopupPage','height=450,width=500,scrollbars=yes,resizable=yes'); return false" target="_blank" onMouseOver="window.status='';  return true" onMouseOut="window.status=''; return true"onFocus="window.status='';  return true" onBlur="window.status=''; return true"  class="submenulinktext2">HELP</A>
+|
+<A HREF="twbkwbis.P_Logout" accesskey="3" class="submenulinktext2">EXIT</A>
+</span>
+</TD>
+</TR>
+</TABLE>
+</DIV>
+<DIV class="pagetitlediv">
+<TABLE  CLASS="plaintable" SUMMARY="This table displays title and static header displays."
+   WIDTH="100%">
+<TR>
+<TD CLASS="pldefault">
+<H2>Quick Add or Drop Course Sections</H2>
+</TD>
+<TD CLASS="pldefault">
+&nbsp;
+</TD>
+<TD CLASS="pldefault"><p class="rightaligntext">
+<DIV class="staticheaders">
+260421979 Charles-Philipp Clermont<br>
+Winter 2015<br>
+Jun 29, 2014 05:58 PM<br>
+</div>
+</TD>
+</TR>
+<TR>
+<TD class="bg3" width="100%" colSpan=3><IMG SRC="/wtlgifs/web_transparent.gif" ALT="Transparent Image" CLASS="headerImg" TITLE="Transparent Image"  NAME="web_transparent" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=3 WIDTH=10></TD>
+</TR>
+</TABLE>
+<a name="main_content"></a>
+</DIV>
+<DIV class="pagebodydiv">
+<!--  ** END OF twbkwbis.P_OpenDoc **  -->
+<BR>
+<FORM ACTION="/pban1/bwckcoms.P_Regs" METHOD="POST" onSubmit="return checkSubmit()">
+<DIV class="infotextdiv"><TABLE  CLASS="infotexttable" SUMMARY="This layout table contains information that may be helpful in understanding the content and functionality of this page.  It could be a brief set of instructions, a description of error messages, or other special information."><TR><TD CLASS="indefault"><IMG SRC="/wtlgifs/web_info_cascade.png" ALT="Information" CLASS="headerImg" TITLE="Information"  NAME="web_info" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=12 WIDTH=14></TD><TD CLASS="indefault"><SPAN class=infotext> <p><b>Minerva does not necessarily prevent students from registering for courses that they should not take. Therefore, it is your responsibility to be aware of prerequisites, corequisites, restrictions, and faculty regulations that apply to the courses in which you register.</b></p><ol><li>Please click on <strong>HELP</strong> at the top right corner of your screen for instructions.<li>If you receive an error message, click on it for detailed information. <li>If you are unsure of which course sections to add, click <strong>Class Search</strong> to search and view the Class Schedule. </li></ol>
+<p><b>Satisfactory / Unsatisfactory grade option</b>: </p>
+<ul><li>Please use the <strong>Grade Mode</strong> column to select <a href="http://www.mcgill.ca/students/courses/plan/s-u/" target="_blank">Satisfactory / Unsatisfactory grade option</a>. <li>Once you have submitted changes and the S/U Option appears under the <strong>Grade Mode</strong> column, this indicates that your changes have been saved.
+<font color = "FF0000"> IMPORTANT - Verify all submissions to ensure against inadvertent changes to your Grade Mode option.</font><li>
+Please note that Freshman year (year 0)  students in Arts, Science, and Agricultural and Environmental Sciences are not eligible to select the S/U option.  </li></ul>
+<!-- <li>You may withdraw from multi-term courses which started in the fall term until Sunday, January 19 by selecting the fall term and withdrawing from the D1 course. The D2 course will be dropped from your record automatically.-->
+ <p><b>Waitlisted courses</b>: </p>
+<ul><li>If you have added yourself to a waitlist, you may view your position on the waitlist on <a href="bwskfshd.P_CrseSchdDetl">View Student Schedule by Course Section</a>. <li>An email will be sent to you to invite you to register once a space is available but emails to notify you of your position as you move up the waitlist are no longer being sent.</li></ul></SPAN></TD></TR></TABLE><P></DIV>
+<INPUT TYPE="hidden" NAME="term_in" VALUE="201501">
+<INPUT TYPE="hidden" NAME="RSTS_IN" VALUE="DUMMY">
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="DUMMY">
+<INPUT TYPE="hidden" NAME="CRN_IN" VALUE="DUMMY">
+<INPUT TYPE="hidden" NAME="start_date_in" VALUE="DUMMY">
+<INPUT TYPE="hidden" NAME="end_date_in" VALUE="DUMMY">
+<INPUT TYPE="hidden" NAME="SUBJ" VALUE="DUMMY">
+<INPUT TYPE="hidden" NAME="CRSE" VALUE="DUMMY">
+<INPUT TYPE="hidden" NAME="SEC" VALUE="DUMMY">
+<INPUT TYPE="hidden" NAME="LEVL" VALUE="DUMMY">
+<INPUT TYPE="hidden" NAME="CRED" VALUE="DUMMY">
+<INPUT TYPE="hidden" NAME="GMOD" VALUE="DUMMY">
+<INPUT TYPE="hidden" NAME="TITLE" VALUE="DUMMY">
+<INPUT TYPE="hidden" NAME="MESG" VALUE="DUMMY">
+<INPUT TYPE="hidden" NAME="REG_BTN" VALUE="DUMMY">
+
+<H3>Current Schedule</H3>
+<TABLE  CLASS="datadisplaytable" SUMMARY="Current Schedule">
+<TR>
+<TH CLASS="ddheader" scope="col" >Status</TH>
+<TH CLASS="ddheader" scope="col" >Action</TH>
+<TH CLASS="ddheader" scope="col" ><ACRONYM title = "Course Reference Number">CRN</ACRONYM></TH>
+<TH CLASS="ddheader" scope="col" ><ABBR title = Subject>Subj</ABBR></TH>
+<TH CLASS="ddheader" scope="col" ><ABBR title = Course>Crse</ABBR></TH>
+<TH CLASS="ddheader" scope="col" ><ABBR title = Section>Sec</ABBR></TH>
+<TH CLASS="ddlabel" scope="row" >Type</TH>
+<TH CLASS="ddheader" scope="col" >Level</TH>
+<TH CLASS="ddheader" scope="col" ><ABBR title = "Credit Hours">Credits or CE Units</ABBR></TH>
+<TH CLASS="ddheader" scope="col" >Grade Mode</TH>
+<TH CLASS="ddheader" scope="col" >Title</TH>
+</TR>
+<TR>
+<TD CLASS="dddefault"><INPUT TYPE="hidden" NAME="MESG" VALUE="DUMMY">Web Registered on May 26, 2014</TD>
+<TD CLASS="dddefault">
+<LABEL for=action_id1><SPAN class=fieldlabeltextinvisible>Action</SPAN></LABEL>
+<SELECT NAME="RSTS_IN" SIZE="1" ID="action_id1">
+<OPTION VALUE="" SELECTED>None
+<OPTION VALUE="DW">Web Drop
+</SELECT>
+</TD>
+<TD CLASS="dddefault"><INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501"><INPUT TYPE="hidden" NAME="CRN_IN" VALUE="6900">6900<INPUT TYPE="hidden" NAME="start_date_in" VALUE="01/05/2015"><INPUT TYPE="hidden" NAME="end_date_in" VALUE="04/14/2015"></TD>
+<TD CLASS="dddefault"><INPUT TYPE="hidden" NAME="SUBJ" VALUE="COMP">COMP</TD>
+<TD CLASS="dddefault"><INPUT TYPE="hidden" NAME="CRSE" VALUE="424">424</TD>
+<TD CLASS="dddefault"><INPUT TYPE="hidden" NAME="SEC" VALUE="001">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault"><INPUT TYPE="hidden" NAME="LEVL" VALUE="Undergraduate">Undergraduate</TD>
+<TD CLASS="dddefault"><INPUT TYPE="hidden" NAME="CRED" VALUE="    3.000">    3.000</TD>
+<TD CLASS="dddefault">
+<SELECT NAME="GMOD">
+<OPTION SELECTED>Standard
+<OPTION>S/U Option
+</SELECT>
+</TD>
+<TD CLASS="dddefault"><INPUT TYPE="hidden" NAME="TITLE" VALUE="Artificial Intelligence.">Artificial Intelligence.</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault"><INPUT TYPE="hidden" NAME="MESG" VALUE="DUMMY">Web Registered on May 26, 2014</TD>
+<TD CLASS="dddefault">
+<LABEL for=action_id2><SPAN class=fieldlabeltextinvisible>Action</SPAN></LABEL>
+<SELECT NAME="RSTS_IN" SIZE="1" ID="action_id2">
+<OPTION VALUE="" SELECTED>None
+<OPTION VALUE="DW">Web Drop
+</SELECT>
+</TD>
+<TD CLASS="dddefault"><INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501"><INPUT TYPE="hidden" NAME="CRN_IN" VALUE="122">122<INPUT TYPE="hidden" NAME="start_date_in" VALUE="01/05/2015"><INPUT TYPE="hidden" NAME="end_date_in" VALUE="04/14/2015"></TD>
+<TD CLASS="dddefault"><INPUT TYPE="hidden" NAME="SUBJ" VALUE="MECH">MECH</TD>
+<TD CLASS="dddefault"><INPUT TYPE="hidden" NAME="CRSE" VALUE="362">362</TD>
+<TD CLASS="dddefault"><INPUT TYPE="hidden" NAME="SEC" VALUE="001">001</TD>
+<TD CLASS="dddefault">Drop-in Lab</TD>
+<TD CLASS="dddefault"><INPUT TYPE="hidden" NAME="LEVL" VALUE="Undergraduate">Undergraduate</TD>
+<TD CLASS="dddefault"><INPUT TYPE="hidden" NAME="CRED" VALUE="    2.000">    2.000</TD>
+<TD CLASS="dddefault">
+<SELECT NAME="GMOD">
+<OPTION SELECTED>Standard
+<OPTION>S/U Option
+</SELECT>
+</TD>
+<TD CLASS="dddefault"><INPUT TYPE="hidden" NAME="TITLE" VALUE="Mechanical Laboratory 1.">Mechanical Laboratory 1.</TD>
+</TR>
+<TR>
+<TD CLASS="dddefault"><INPUT TYPE="hidden" NAME="MESG" VALUE="DUMMY">Web Registered on Jun 12, 2014</TD>
+<TD CLASS="dddefault">
+<LABEL for=action_id3><SPAN class=fieldlabeltextinvisible>Action</SPAN></LABEL>
+<SELECT NAME="RSTS_IN" SIZE="1" ID="action_id3">
+<OPTION VALUE="" SELECTED>None
+<OPTION VALUE="DW">Web Drop
+</SELECT>
+</TD>
+<TD CLASS="dddefault"><INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="201501"><INPUT TYPE="hidden" NAME="CRN_IN" VALUE="1724">1724<INPUT TYPE="hidden" NAME="start_date_in" VALUE="01/05/2015"><INPUT TYPE="hidden" NAME="end_date_in" VALUE="04/14/2015"></TD>
+<TD CLASS="dddefault"><INPUT TYPE="hidden" NAME="SUBJ" VALUE="SOCI">SOCI</TD>
+<TD CLASS="dddefault"><INPUT TYPE="hidden" NAME="CRSE" VALUE="312">312</TD>
+<TD CLASS="dddefault"><INPUT TYPE="hidden" NAME="SEC" VALUE="001">001</TD>
+<TD CLASS="dddefault">Lecture</TD>
+<TD CLASS="dddefault"><INPUT TYPE="hidden" NAME="LEVL" VALUE="Undergraduate">Undergraduate</TD>
+<TD CLASS="dddefault"><INPUT TYPE="hidden" NAME="CRED" VALUE="    3.000">    3.000</TD>
+<TD CLASS="dddefault">
+<SELECT NAME="GMOD">
+<OPTION SELECTED>Standard
+<OPTION>S/U Option
+</SELECT>
+</TD>
+<TD CLASS="dddefault"><INPUT TYPE="hidden" NAME="TITLE" VALUE="Sociology of Work and Industry.">Sociology of Work and Industry.</TD>
+</TR>
+</TABLE>
+<BR>
+<TABLE  CLASS="plaintable" SUMMARY="Schedule Summary">
+<TR>
+<TD CLASS="pldefault">Total Credits: </TD>
+<TD CLASS="pldefault">    8.000</TD>
+</TR>
+<TR>
+<TD CLASS="pldefault">Billing Hours:</TD>
+<TD CLASS="pldefault">    8.000</TD>
+</TR>
+<TR>
+<TD CLASS="pldefault">Minimum Hours:</TD>
+<TD CLASS="pldefault">      0.000</TD>
+</TR>
+<TR>
+<TD CLASS="pldefault">Maximum Hours:</TD>
+<TD CLASS="pldefault">     18.000</TD>
+</TR>
+<TR>
+<TD CLASS="pldefault">Date:</TD>
+<TD CLASS="pldefault">Jun 29, 2014 05:58 PM</TD>
+</TR>
+</TABLE>
+<BR>
+<H3>Quick Add Worksheet</H3>
+<TABLE  CLASS="dataentrytable" SUMMARY="Add Classes Data Entry" WIDTH="100%">
+<TR>
+<TD COLSPAN="10" CLASS="detitle" scope="colgroup" ><ACRONYM title = "Course Reference Numbers">CRNs</ACRONYM></TD>
+</TR>
+<TR>
+<TD CLASS="dedefault">
+<INPUT TYPE="hidden" NAME="RSTS_IN" VALUE="RW">
+<LABEL for=crn_id1><SPAN class=fieldlabeltextinvisible>CRN</SPAN></LABEL>
+<INPUT TYPE="text" NAME="CRN_IN" SIZE="6" MAXLENGTH="5" ID="crn_id1">
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="">
+<INPUT TYPE="hidden" NAME="start_date_in" VALUE="">
+<INPUT TYPE="hidden" NAME="end_date_in" VALUE="">
+</TD>
+<TD CLASS="dedefault">
+<INPUT TYPE="hidden" NAME="RSTS_IN" VALUE="RW">
+<LABEL for=crn_id2><SPAN class=fieldlabeltextinvisible>CRN</SPAN></LABEL>
+<INPUT TYPE="text" NAME="CRN_IN" SIZE="6" MAXLENGTH="5" ID="crn_id2">
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="">
+<INPUT TYPE="hidden" NAME="start_date_in" VALUE="">
+<INPUT TYPE="hidden" NAME="end_date_in" VALUE="">
+</TD>
+<TD CLASS="dedefault">
+<INPUT TYPE="hidden" NAME="RSTS_IN" VALUE="RW">
+<LABEL for=crn_id3><SPAN class=fieldlabeltextinvisible>CRN</SPAN></LABEL>
+<INPUT TYPE="text" NAME="CRN_IN" SIZE="6" MAXLENGTH="5" ID="crn_id3">
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="">
+<INPUT TYPE="hidden" NAME="start_date_in" VALUE="">
+<INPUT TYPE="hidden" NAME="end_date_in" VALUE="">
+</TD>
+<TD CLASS="dedefault">
+<INPUT TYPE="hidden" NAME="RSTS_IN" VALUE="RW">
+<LABEL for=crn_id4><SPAN class=fieldlabeltextinvisible>CRN</SPAN></LABEL>
+<INPUT TYPE="text" NAME="CRN_IN" SIZE="6" MAXLENGTH="5" ID="crn_id4">
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="">
+<INPUT TYPE="hidden" NAME="start_date_in" VALUE="">
+<INPUT TYPE="hidden" NAME="end_date_in" VALUE="">
+</TD>
+<TD CLASS="dedefault">
+<INPUT TYPE="hidden" NAME="RSTS_IN" VALUE="RW">
+<LABEL for=crn_id5><SPAN class=fieldlabeltextinvisible>CRN</SPAN></LABEL>
+<INPUT TYPE="text" NAME="CRN_IN" SIZE="6" MAXLENGTH="5" ID="crn_id5">
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="">
+<INPUT TYPE="hidden" NAME="start_date_in" VALUE="">
+<INPUT TYPE="hidden" NAME="end_date_in" VALUE="">
+</TD>
+<TD CLASS="dedefault">
+<INPUT TYPE="hidden" NAME="RSTS_IN" VALUE="RW">
+<LABEL for=crn_id6><SPAN class=fieldlabeltextinvisible>CRN</SPAN></LABEL>
+<INPUT TYPE="text" NAME="CRN_IN" SIZE="6" MAXLENGTH="5" ID="crn_id6">
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="">
+<INPUT TYPE="hidden" NAME="start_date_in" VALUE="">
+<INPUT TYPE="hidden" NAME="end_date_in" VALUE="">
+</TD>
+<TD CLASS="dedefault">
+<INPUT TYPE="hidden" NAME="RSTS_IN" VALUE="RW">
+<LABEL for=crn_id7><SPAN class=fieldlabeltextinvisible>CRN</SPAN></LABEL>
+<INPUT TYPE="text" NAME="CRN_IN" SIZE="6" MAXLENGTH="5" ID="crn_id7">
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="">
+<INPUT TYPE="hidden" NAME="start_date_in" VALUE="">
+<INPUT TYPE="hidden" NAME="end_date_in" VALUE="">
+</TD>
+<TD CLASS="dedefault">
+<INPUT TYPE="hidden" NAME="RSTS_IN" VALUE="RW">
+<LABEL for=crn_id8><SPAN class=fieldlabeltextinvisible>CRN</SPAN></LABEL>
+<INPUT TYPE="text" NAME="CRN_IN" SIZE="6" MAXLENGTH="5" ID="crn_id8">
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="">
+<INPUT TYPE="hidden" NAME="start_date_in" VALUE="">
+<INPUT TYPE="hidden" NAME="end_date_in" VALUE="">
+</TD>
+<TD CLASS="dedefault">
+<INPUT TYPE="hidden" NAME="RSTS_IN" VALUE="RW">
+<LABEL for=crn_id9><SPAN class=fieldlabeltextinvisible>CRN</SPAN></LABEL>
+<INPUT TYPE="text" NAME="CRN_IN" SIZE="6" MAXLENGTH="5" ID="crn_id9">
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="">
+<INPUT TYPE="hidden" NAME="start_date_in" VALUE="">
+<INPUT TYPE="hidden" NAME="end_date_in" VALUE="">
+</TD>
+<TD CLASS="dedefault">
+<INPUT TYPE="hidden" NAME="RSTS_IN" VALUE="RW">
+<LABEL for=crn_id10><SPAN class=fieldlabeltextinvisible>CRN</SPAN></LABEL>
+<INPUT TYPE="text" NAME="CRN_IN" SIZE="6" MAXLENGTH="5" ID="crn_id10">
+<INPUT TYPE="hidden" NAME="assoc_term_in" VALUE="">
+<INPUT TYPE="hidden" NAME="start_date_in" VALUE="">
+<INPUT TYPE="hidden" NAME="end_date_in" VALUE="">
+</TD>
+</TABLE>
+<INPUT TYPE="hidden" NAME="regs_row" VALUE="3">
+<INPUT TYPE="hidden" NAME="wait_row" VALUE="0">
+<INPUT TYPE="hidden" NAME="add_row" VALUE="10">
+
+<BR>
+<INPUT TYPE="submit" NAME="REG_BTN" VALUE="Submit Changes">
+<INPUT TYPE="submit" NAME="REG_BTN" VALUE="Class Search">
+<INPUT TYPE="reset" VALUE="Reset">
+</FORM>
+
+<!--  ** START OF twbkwbis.P_CloseDoc **  -->
+<TABLE  CLASS="plaintable" SUMMARY="This is table displays line separator at end of the page."
+                                             WIDTH="100%" cellSpacing=0 cellPadding=0 border=0><TR><TD class=bgtabon width="100%" colSpan=2><IMG SRC="/wtlgifs/web_transparent.gif" ALT="Transparent Image" CLASS="headerImg" TITLE="Transparent Image"  NAME="web_transparent" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=3 WIDTH=10></TD></TR></TABLE>
+<A HREF="#top" onMouseover="window.status='Skip to top of page'; return true" onMouseout="window.status=''; return true" OnFocus="window.status='Skip to top of page'; return true" onBlur="window.status=''; return true" class="skiplinks">Skip to top of page</A>
+<DIV class="footerlinksdiv">
+<SPAN class="pagefooterlinks">
+<MAP NAME="Quick_Add_or_Drop_Course_Sections_Links_F" title="Quick Add or Drop Course Sections Links">
+<p>
+<A HREF="#skip_Quick_Add_or_Drop_Course_Sections_Links_F" onMouseover="window.status='Skip Quick Add or Drop Course Sections Links'; return true" onMouseout="window.status=''; return true" onFocus="window.status='Skip Quick Add or Drop Course Sections Links'; return true" onBlur="window.status=''; return true"  class="skiplinks">Skip Quick Add or Drop Course Sections Links</A>
+<P>[ <A HREF="/pban1/bwskffee.P_FeeAsses" onMouseover="window.status='Next Step: Verify Registration Fee...'; return true" onMouseout="window.status=''; return true" onFocus="window.status='Next Step: Verify Registration Fee...'; return true" onBlur="window.status=''; return true" >Next Step: Verify Registration Fee...</A>
+ | <A HREF="/pban1/bwskflib.P_SelDefTerm" onMouseover="window.status='Change Term'; return true" onMouseout="window.status=''; return true" onFocus="window.status='Change Term'; return true" onBlur="window.status=''; return true" >Change Term</A>
+ | <A HREF="none">Minerva Help Line 514-398-7878</A>
+ ]
+</MAP>
+</SPAN>
+<a name="skip_Quick_Add_or_Drop_Course_Sections_Links_F"></a>
+</DIV>
+<DIV class="pagefooterdiv">
+<SPAN class="releasetext">Release: 8.4</SPAN>
+</DIV>
+<DIV class="poweredbydiv">
+</DIV>
+<DIV class="div1"></DIV>
+<DIV class="div2"></DIV>
+<DIV class="div3"></DIV>
+<DIV class="div4"></DIV>
+<DIV class="div5"></DIV>
+<DIV class="div6"></DIV>
+</DIV>
+</BODY>
+</HTML>
+

@@ -2,6 +2,7 @@
 'use strict';
 
 var expect = require('chai').expect;
+var _ = require('lodash');
 var q = require('q');
 
 var Minerva = require('../minerva');
@@ -44,6 +45,7 @@ describe("Minerva", function () {
   });
 
   describe("#getTranscript", function() {
+    this.timeout(3000);
     it("should get a list of courses and grades", function (done) {
       sess.getTranscript()
       .then(function(content) {
@@ -83,6 +85,107 @@ describe("Minerva", function () {
       }).fail(function(err) {
         console.log(err);
         expect(err).to.not.exist;
+        done();
+      });
+    });
+  });
+
+  describe("#getRegisteredCourses", function () { 
+    this.timeout(5000);
+    it("should return a list of courses that you are registered for", function(done) {
+      sess.getRegisteredCourses({ season: 'w', year: '2015' })
+      .then(function(promised_obj) {
+        expect(promised_obj).to.be.an.Array;
+        expect(promised_obj[0]).to.include.keys('Status', 'CRN', 'Type');
+        done();
+      });
+    });
+
+    it("should tell you if you are not registered for anything with an empty array", function(done) {
+      sess.getRegisteredCourses({ season: 's', year: '2015' })
+      .then(function(promised_obj) {
+        expect(promised_obj).to.be.an.Array;
+        expect(promised_obj.length).to.be.equal(0);
+        done();
+      });
+    });
+  });
+
+  describe("#addCourses", function() {
+    this.timeout(7000);
+
+    it("should allow registering for a course", function(done) {
+      sess.addCourses({season: 'w', year: '2015', crn: '3050'}) //3050 == COMP 208
+      .then(function(promised_obj) {
+        var wr_course = _.find(promised_obj, { CRN: '3050' });
+        expect(wr_course.Status).to.contain('Web Registered on');
+        done();
+      }, function(err) {
+        console.log(err);
+        expect(false).to.be.true;
+        done();
+      });
+    });
+
+    it("should allow registering for multiple courses", function(done) {
+      sess.addCourses({season: 'w', year: '2015', crn: ['9182', '709']}) //3050 == COMP 208
+      .then(function(promised_obj) {
+        var wr_course1 = _.find(promised_obj, { CRN: '9182' });
+        expect(wr_course1.Status).to.contain('Web Registered on');
+        var wr_course2 = _.find(promised_obj, { CRN: '709' });
+        expect(wr_course2.Status).to.contain('Web Registered on');
+        done();
+      }, function(err) {
+        console.log(err);
+        expect(false).to.be.true;
+        done();
+      });
+    });
+
+    it("should tell you if you couldnt register", function (done){
+      sess.addCourses({season: 'w', year: '2015', crn: '3050'}) //3050 == COMP 208
+      .then(function() {
+        expect(false).to.be.true;
+        done();
+      }, function(err) {
+        expect(err).to.exist;
+        done();
+      });
+    });
+  });
+
+  describe("#dropCourses", function () { 
+    it("should enable dropping courses", function(done) {
+      sess.dropCourses({season: 'w', year: '2015', crn: '3050'})
+      .then(function() {
+        expect(true).to.be.true;
+        done();
+      }, function(err) {
+        console.log(err);
+        expect(false).to.be.true;
+        done();
+      });
+    });  
+
+    it("should allow dropping multiple courses", function(done) {
+      sess.dropCourses({season: 'w', year: '2015', crn: ['9182', '709']})
+      .then(function(promised_obj) {
+        var wr_course1 = _.find(promised_obj, { CRN: '9182' });
+        expect(wr_course1).to.be.undefined;
+        var wr_course2 = _.find(promised_obj, { CRN: '709' });
+        expect(wr_course2).to.be.undefined;
+        done();
+      }, function(err) {
+        console.log(err);
+        expect(false).to.be.true;
+        done();
+      });
+    });
+
+    it("should tell you if you couldnt drop course", function(done) {
+      sess.dropCourses({season: 'w', year: '2015', crn: '3050'})
+      .then(null, function(err) {
+        expect(err).to.exist;
         done();
       });
     });
