@@ -75,7 +75,7 @@ Therefore, to use the results of the function you need to chain chain a `then` w
       + `season`, `w`, `s`, or `f`;
       + `year`, e.g. 2015;
       + `crn`, crn string or array of crns (course reference numbers)
-  * `dropCourses(option)`: returns a promise for the opposite of add courses.
+  * `dropCourses(options)`: returns a promise for the opposite of add courses.
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
