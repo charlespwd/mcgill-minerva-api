@@ -1,6 +1,9 @@
 'use strict';
 
+var MAX_RETRY_COUNT = 5;
+
 var q = require('q');
+var fs = require('fs');
 var request = require('request');
 var _ = require('lodash');
 
@@ -94,23 +97,36 @@ Minerva.prototype.dropCourses = function(options) {
 };
 
 
-Minerva.prototype.login = function() {
+Minerva.prototype.login = function(retry_count) {
+  retry_count = retry_count || 1;
+
   var deferred = q.defer();
 
   var url = CONSTANTS.URLS.login;
-  var jar = Minerva.jar('TESTID=set'); 
+  var jar = Minerva.jar('TESTID=set');
   var form = {
     sid:  this.u,
-    PIN:  this.p 
+    PIN:  this.p
   };
 
-  mgRequest.post(url, jar, form)
-  .then(function(promised_obj) {
-    var cookie_string = promised_obj.jar.getCookieString(CONSTANTS.BASE_URL + '/');
-    var contains_sessid = cookie_string.indexOf(' SESSID=') !== -1;
-    if (contains_sessid) deferred.resolve(promised_obj);
-    else deferred.reject(new Error('could not login'));
-  });
+  function a(jar, retry_count) {
+    return mgRequest.post(url, jar, form)
+    .then(function(promised_obj) {
+      var cookie_string = promised_obj.jar.getCookieString(CONSTANTS.BASE_URL + '/');
+      var contains_sessid = cookie_string.indexOf('SESSID=') !== -1;
+      if (contains_sessid) deferred.resolve(promised_obj);
+      else {
+        if (retry_count < MAX_RETRY_COUNT) {
+          a(promised_obj.jar, retry_count + 1);
+        } else {
+          fs.writeFileSync('error.html', promised_obj.body);
+          deferred.reject(new Error('could not login'));
+        }
+      }
+    });
+  }
+
+  a(jar, retry_count);
 
   return deferred.promise;
 };
@@ -141,10 +157,10 @@ Minerva.prototype.promiseTranscriptPage = function(promised_obj) {
 
 Minerva.prototype.promiseCoursePage = function(selection, promised_obj) {
   // this is a hack cause I have no clue what the fuck is going on with mgRequest's
-  // post data on that form. Somehow they duplicate keys, put dummy somewhere, some random %25s, ... 
+  // post data on that form. Somehow they duplicate keys, put dummy somewhere, some random %25s, ...
   // I'm not sure but I think I have to write the damn thing by hand and in order.
-  // sooo... This is my not so elegant solution but it works and I'm happy :) 
-  // If you can refactor it, feel free :) 
+  // sooo... This is my not so elegant solution but it works and I'm happy :)
+  // If you can refactor it, feel free :)
   function formUrlEncode(sel) {
     // sel keys : dep, number, season, year
     // season matches WSF for winter summer fall
@@ -273,7 +289,7 @@ Minerva.prototype.promiseAddOrDropCoursePage = function(drop, selection, promise
       ].join('');
 
       // this is where it's happening for dropping course
-      core_drop += [ 
+      core_drop += [
         "&RSTS_IN=DW",
         "&assoc_term_in=" + (sel.year || '2015') + sn,
         "&CRN_IN=" + crn,
@@ -305,7 +321,7 @@ Minerva.prototype.promiseAddOrDropCoursePage = function(drop, selection, promise
     else {
       console.log(promised_obj.body);
       deferred.reject(new Error('Either couldnt login, or 404, or 400 bad request'));
-    } 
+    }
   }, function(err) {
     deferred.reject(err);
   });
@@ -321,7 +337,7 @@ Minerva.isLoggedIn = function(html) {
 Minerva.fmtSeason = function(season) {
   switch(season || 'w') {
     case 'w': return '01';
-    case 's': return '05'; 
+    case 's': return '05';
     case 'f': return '09';
     default:
       throw new Error('season format /[wsf]/');
