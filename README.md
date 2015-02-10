@@ -36,8 +36,10 @@ minerva.getCourses({
 ```
 
 ## Documentation
-`Minerva`'s functions are promises, see Kris Kowal's very excellent [Q](https://github.com/kriskowal/q) module. 
-Therefore, to use the results of the function you need to chain chain a `then` with a callback.
+`Minerva`'s functions are promises, see Kris Kowal's very excellent
+[Q](https://github.com/kriskowal/q) module.  Therefore, to use the
+results of the function you need to chain chain a `then` with a
+callback.
   * `getTranscript()`: returns a promise for an array of courses. Course example:  
 ```javascript
 {
