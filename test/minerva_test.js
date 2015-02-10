@@ -7,14 +7,14 @@ var q = require('q');
 
 var Minerva = require('../minerva');
 
-describe("Minerva", function () { 
+describe("Minerva", function () {
+  this.timeout(10000);
   var sess;
   beforeEach(function() {
     sess = new Minerva();
   });
 
-  describe("#login", function () { 
-    this.timeout(3000);
+  describe("#login", function () {
 
     it("should return a promise", function (done) {
       expect(q.isPromise(sess.login())).to.be.true;
@@ -40,12 +40,11 @@ describe("Minerva", function () {
       }, function(err) {
         expect(err).to.exist;
         done();
-      }); 
+      });
     });
   });
 
   describe("#getTranscript", function() {
-    this.timeout(3000);
     it("should get a list of courses and grades", function (done) {
       sess.getTranscript()
       .then(function(content) {
@@ -62,7 +61,6 @@ describe("Minerva", function () {
   });
 
   describe("#getCourses", function() {
-    this.timeout(7000);
     it("should allow choosing a course section", function(done) {
       var selection = { dep: 'COMP', number: '250' };
       sess.getCourses(selection)
@@ -90,8 +88,7 @@ describe("Minerva", function () {
     });
   });
 
-  describe("#getRegisteredCourses", function () { 
-    this.timeout(5000);
+  describe("#getRegisteredCourses", function () {
     it("should return a list of courses that you are registered for", function(done) {
       sess.getRegisteredCourses({ season: 'w', year: '2015' })
       .then(function(promised_obj) {
@@ -112,7 +109,6 @@ describe("Minerva", function () {
   });
 
   describe("#addCourses", function() {
-    this.timeout(7000);
 
     it("should allow registering for a course", function(done) {
       sess.addCourses({season: 'w', year: '2015', crn: '3050'}) //3050 == COMP 208
@@ -154,7 +150,7 @@ describe("Minerva", function () {
     });
   });
 
-  describe("#dropCourses", function () { 
+  describe("#dropCourses", function () {
     it("should enable dropping courses", function(done) {
       sess.dropCourses({season: 'w', year: '2015', crn: '3050'})
       .then(function() {
@@ -165,7 +161,7 @@ describe("Minerva", function () {
         expect(false).to.be.true;
         done();
       });
-    });  
+    });
 
     it("should allow dropping multiple courses", function(done) {
       sess.dropCourses({season: 'w', year: '2015', crn: ['9182', '709']})
