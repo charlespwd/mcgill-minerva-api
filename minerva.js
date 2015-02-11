@@ -4,12 +4,11 @@ var MAX_RETRY_COUNT = 5;
 
 var q = require('q');
 var fs = require('fs');
-var request = require('request');
 var _ = require('lodash');
 
 var CONSTANTS = require('./lib/CONSTANTS.js');
-var mgRequest = require('./lib/mgRequest');
-var mgParser = require('./lib/mgParser');
+var Request = require('./lib/request-util');
+var Parser = require('./lib/parser');
 
 var Minerva = function(u, p) {
   this.u = u || process.env.MG_USER;
@@ -21,15 +20,20 @@ Minerva.prototype.getTranscript = function() {
 
   this.login()
   .then(this.promiseTranscriptPage)
-  .then(function(promised_obj) {
-    var page = promised_obj.body;
-    if(!Minerva.isLoggedIn(page)) deferred.reject(new Error('404'));
-    else {
-      deferred.resolve(mgParser.parseTranscript(promised_obj.body));
-    }
-  }, function(err) {
-    deferred.reject(err);
-  });
+  .then(
+    // success callback
+    function(promised_obj) {
+      var page = promised_obj.body;
+      if(!Minerva.isLoggedIn(page)) deferred.reject(new Error('404'));
+      else {
+        deferred.resolve(Parser.parseTranscript(promised_obj.body));
+      }
+    },
+
+    // failure callback
+    function(err) {
+      deferred.reject(err);
+    });
 
   return deferred.promise;
 };
@@ -40,7 +44,7 @@ Minerva.prototype.getCourses = function(selection) {
   this.login()
   .then(_.bind(this.promiseCoursePage, this, selection))
   .then(function(promised_obj) {
-    deferred.resolve(mgParser.parseCourses(promised_obj.body));
+    deferred.resolve(Parser.parseCourses(promised_obj.body));
   }, function(err) {
     deferred.reject(err);
   });
@@ -54,7 +58,7 @@ Minerva.prototype.getRegisteredCourses = function(options) {
   this.login()
   .then(_.bind(this.promiseRegisteredCoursesPage, this, options))
   .then(function(promised_obj) {
-    deferred.resolve(mgParser.parseRegisteredCourses(promised_obj.body));
+    deferred.resolve(Parser.parseRegisteredCourses(promised_obj.body));
   }, function(err) {
     deferred.reject(err);
   });
@@ -68,7 +72,7 @@ Minerva.prototype.addCourses = function(options) {
   this.login()
   .then(_.bind(this.promiseAddCoursePage, this, options))
   .then(function(promised_obj) {
-    var courses = mgParser.parseRegisteredCourses(promised_obj.body);
+    var courses = Parser.parseRegisteredCourses(promised_obj.body);
     var error = _.find(courses, 'ErrorMsg');
     if (error) deferred.reject(new Error(error.ErrorMsg));
     else deferred.resolve(courses);
@@ -85,7 +89,7 @@ Minerva.prototype.dropCourses = function(options) {
   this.login()
   .then(_.bind(this.promiseDropCoursePage, this, options))
   .then(function(promised_obj) {
-    var courses = mgParser.parseRegisteredCourses(promised_obj.body);
+    var courses = Parser.parseRegisteredCourses(promised_obj.body);
     var error = _.find(courses, 'ErrorMsg');
     if (error) deferred.reject(new Error(error.ErrorMsg));
     else deferred.resolve(courses);
@@ -103,14 +107,14 @@ Minerva.prototype.login = function(retry_count) {
   var deferred = q.defer();
 
   var url = CONSTANTS.URLS.login;
-  var jar = Minerva.jar('TESTID=set');
+  var jar = Request.jar('TESTID=set');
   var form = {
     sid:  this.u,
     PIN:  this.p
   };
 
   function a(jar, retry_count) {
-    return mgRequest.post(url, jar, form)
+    return Request.post(url, jar, form)
     .then(function(promised_obj) {
       var cookie_string = promised_obj.jar.getCookieString(CONSTANTS.BASE_URL + '/');
       var contains_sessid = cookie_string.indexOf('SESSID=') !== -1;
@@ -131,22 +135,13 @@ Minerva.prototype.login = function(retry_count) {
   return deferred.promise;
 };
 
-Minerva.jar = function(cookie) {
-  var url = CONSTANTS.BASE_URL + '/';
-  var j = request.jar();
-  var required_cookie = request.cookie(cookie);
-  j.setCookie(required_cookie, url);
-
-  return j;
-};
-
 Minerva.prototype.promiseTranscriptPage = function(promised_obj) {
   var deferred = q.defer();
 
   var url = CONSTANTS.URLS.transcript;
   var jar = promised_obj.jar;
 
-  mgRequest.get(url, jar)
+  Request.get(url, jar)
   .then(function(promised_obj) {
     if(Minerva.isLoggedIn(promised_obj.body)) deferred.resolve(promised_obj);
     else deferred.reject(new Error('got 404'));
@@ -205,7 +200,7 @@ Minerva.prototype.promiseCoursePage = function(selection, promised_obj) {
   // var form = "term_in=201501&sel_subj=dummy&sel_day=dummy&sel_schd=dummy&sel_insm=dummy&sel_camp=dummy&sel_levl=dummy&sel_sess=dummy&sel_instr=dummy&sel_ptrm=dummy&sel_attr=dummy&sel_subj=COMP&sel_crse=&sel_title=&sel_schd=%25&sel_from_cred=&sel_to_cred=&sel_levl=%25&sel_ptrm=%25&sel_instr=%25&sel_attr=%25&begin_hh=0&begin_mi=0&begin_ap=a&end_hh=0&end_mi=0&end_ap=a";
   var form = formUrlEncode(selection || {});
 
-  mgRequest.post(url, jar, form)
+  Request.post(url, jar, form)
   .then(function(coursesJarAndBody) {
     if(Minerva.isLoggedIn(coursesJarAndBody.body)) deferred.resolve(coursesJarAndBody);
     else deferred.reject(new Error('couldnt resolve course selection'));
@@ -225,7 +220,7 @@ Minerva.prototype.promiseRegisteredCoursesPage = function(options, promised_obj)
     term_in: (options.year || '2015') + Minerva.fmtSeason(options.season)
   };
 
-  mgRequest.post(url, jar, form)
+  Request.post(url, jar, form)
   .then(function(promised_obj) {
     if(Minerva.isLoggedIn(promised_obj.body)) deferred.resolve(promised_obj);
     else deferred.reject(new Error('couldnt get list of registered_courses'));
@@ -315,7 +310,7 @@ Minerva.prototype.promiseAddOrDropCoursePage = function(drop, selection, promise
   var form = formUrlEncode(selection || {});
   //  form = "term_in=201501&RSTS_IN=DUMMY&assoc_term_in=DUMMY&CRN_IN=DUMMY&start_date_in=DUMMY&end_date_in=DUMMY&SUBJ=DUMMY&CRSE=DUMMY&SEC=DUMMY&LEVL=DUMMY&CRED=DUMMY&GMOD=DUMMY&TITLE=DUMMY&MESG=DUMMY&REG_BTN=DUMMY&MESG=DUMMY&RSTS_IN=&assoc_term_in=201501&CRN_IN=6900&start_date_in=01%2F05%2F2015&end_date_in=04%2F14%2F2015&SUBJ=COMP&CRSE=424&SEC=001&LEVL=Undergraduate&CRED=++++3.000&GMOD=Standard&TITLE=Artificial+Intelligence.&MESG=DUMMY&RSTS_IN=&assoc_term_in=201501&CRN_IN=122&start_date_in=01%2F05%2F2015&end_date_in=04%2F14%2F2015&SUBJ=MECH&CRSE=362&SEC=001&LEVL=Undergraduate&CRED=++++2.000&GMOD=Standard&TITLE=Mechanical+Laboratory+1.&MESG=DUMMY&RSTS_IN=&assoc_term_in=201501&CRN_IN=1724&start_date_in=01%2F05%2F2015&end_date_in=04%2F14%2F2015&SUBJ=SOCI&CRSE=312&SEC=001&LEVL=Undergraduate&CRED=++++3.000&GMOD=Standard&TITLE=Sociology+of+Work+and+Industry.&RSTS_IN=RW&CRN_IN=3050&assoc_term_in=&start_date_in=&end_date_in=&RSTS_IN=RW&CRN_IN=&assoc_term_in=&start_date_in=&end_date_in=&RSTS_IN=RW&CRN_IN=&assoc_term_in=&start_date_in=&end_date_in=&RSTS_IN=RW&CRN_IN=&assoc_term_in=&start_date_in=&end_date_in=&RSTS_IN=RW&CRN_IN=&assoc_term_in=&start_date_in=&end_date_in=&RSTS_IN=RW&CRN_IN=&assoc_term_in=&start_date_in=&end_date_in=&RSTS_IN=RW&CRN_IN=&assoc_term_in=&start_date_in=&end_date_in=&RSTS_IN=RW&CRN_IN=&assoc_term_in=&start_date_in=&end_date_in=&RSTS_IN=RW&CRN_IN=&assoc_term_in=&start_date_in=&end_date_in=&RSTS_IN=RW&CRN_IN=&assoc_term_in=&start_date_in=&end_date_in=&regs_row=3&wait_row=0&add_row=10&REG_BTN=Submit+Changes";
 
-  mgRequest.post(url, jar, form)
+  Request.post(url, jar, form)
   .then(function(promised_obj) {
     if(Minerva.isLoggedIn(promised_obj.body)) deferred.resolve(promised_obj);
     else {
