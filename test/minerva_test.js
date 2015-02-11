@@ -95,6 +95,10 @@ describe("Minerva", function () {
         expect(promised_obj).to.be.an.Array;
         expect(promised_obj[0]).to.include.keys('Status', 'CRN', 'Type');
         done();
+      }, function(err) {
+        console.log(err);
+        expect(false).to.be.true;
+        done();
       });
     });
 
@@ -103,6 +107,10 @@ describe("Minerva", function () {
       .then(function(promised_obj) {
         expect(promised_obj).to.be.an.Array;
         expect(promised_obj.length).to.be.equal(0);
+        done();
+      }, function(err) {
+        console.log(err);
+        expect(false).to.be.true;
         done();
       });
     });
@@ -182,6 +190,10 @@ describe("Minerva", function () {
       sess.dropCourses({season: 'w', year: '2015', crn: '3050'})
       .then(null, function(err) {
         expect(err).to.exist;
+        done();
+      }, function(err) {
+        console.log(err);
+        expect(false).to.be.true;
         done();
       });
     });
