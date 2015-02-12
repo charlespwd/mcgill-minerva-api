@@ -15,8 +15,8 @@ function login(user) {
   var url = CONSTANTS.URLS.login;
   var jar = Request.jar('TESTID=set');
   var form = {
-    sid:  user.u,
-    PIN:  user.p
+    sid:  user.username,
+    PIN:  user.password
   };
 
   function retry(jar, retry_count) {
@@ -65,11 +65,12 @@ function promiseTranscript() {
 
 function promiseCourses(selection) {
   return function(promised_obj) {
-    // this is a hack cause I have no clue what the fuck is going on with mgRequest's
-    // post data on that form. Somehow they duplicate keys, put dummy somewhere, some random %25s, ...
-    // I'm not sure but I think I have to write the damn thing by hand and in order.
-    // sooo... This is my not so elegant solution but it works and I'm happy :)
-    // If you can refactor it, feel free :)
+    // this is a hack cause I have no clue what the fuck is going on with
+    // McGill's post data on that form. Somehow they duplicate keys, put dummy
+    // somewhere, some random %25s, ...  I'm not sure but I think I have to
+    // write the damn thing by hand and in order.  sooo... This is my not so
+    // elegant solution but it works and I'm happy :) If you can refactor it,
+    // feel free :)
     function formUrlEncode(sel) {
       // sel keys : dep, number, season, year
       // season matches WSF for winter summer fall
@@ -167,8 +168,9 @@ function promiseRegisteredCourses(options) {
 
 function promiseAddOrDropCourse(drop, selection) {
   return function(promised_obj) {
-    // OH... Myyyy... Goooood. Wtf were McGill Minerva's programmers thinking?????
-    // This has GOT to be the most awful HTTP Post request you could imagine to build
+    // OH... Myyyy... Goooood. Wtf were McGill Minerva's programmers
+    // thinking?????  This has GOT to be the most awful HTTP Post request you
+    // could imagine to build
     function formUrlEncode(sel) {
       // sel keys : dep, number, season, year
       // season matches WSF for winter summer fall
@@ -195,8 +197,9 @@ function promiseAddOrDropCourse(drop, selection) {
         "&MESG=DUMMY",
       ].join('');
 
-      if (!(sel.crn instanceof Array))
+      if (!(sel.crn instanceof Array)) {
         sel.crn = [sel.crn];
+      }
 
       var core_add = '', core_drop = '';
       _.forEach(sel.crn, function(crn) {
@@ -266,12 +269,13 @@ function promiseDropCourses(selection) {
 }
 
 var Minerva = function(u, p) {
-  this.u = u || process.env.MG_USER;
-  this.p = p || process.env.MG_PASS;
+  this.username = u || process.env.MG_USER;
+  this.password = p || process.env.MG_PASS;
 };
 
 Minerva.prototype = {
 
+  // for testing and backward compatibility
   login: function() {
     return login(this);
   },
