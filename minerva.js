@@ -1,7 +1,6 @@
 'use strict';
 
 var q = require('q');
-var fs = require('fs');
 var _ = require('lodash');
 
 var CONSTANTS = require('./lib/CONSTANTS.js');
@@ -31,7 +30,6 @@ function login(user) {
         if (retry_count < CONSTANTS.MAX_RETRY_COUNT) {
           retry(promised_obj.jar, retry_count + 1);
         } else {
-          fs.writeFileSync('error.html', promised_obj.body);
           deferred.reject(new Error('could not login'));
         }
       }
