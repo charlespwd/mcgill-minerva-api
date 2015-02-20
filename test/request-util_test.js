@@ -5,7 +5,6 @@ var q = require('q');
 
 var CONSTANTS = require('../lib/CONSTANTS');
 var Request = require('../lib/request-util');
-var Minerva = require('../minerva');
 
 describe("Request", function () {
 
@@ -16,7 +15,7 @@ describe("Request", function () {
 
     it("should resolve an object containaing jar and body", function (done) {
       var url = CONSTANTS.URLS.login;
-      var jar = Minerva.jar('TESTID=set');
+      var jar = Request.jar('TESTID=set');
       var form = {
         sid: this.u,
         PIN: this.p
@@ -37,7 +36,7 @@ describe("Request", function () {
 
     it("should resolve an object containaing jar and body", function (done) {
       var url = 'http://google.com';
-      var jar = Minerva.jar('TESTID=set');
+      var jar = Request.jar('TESTID=set');
       Request.get(url, jar)
       .then(function(promised_obj) {
         expect(promised_obj.jar).to.exist;
