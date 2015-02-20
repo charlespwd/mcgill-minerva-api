@@ -26,19 +26,16 @@ describe("Minerva", function () {
         expect(promised_obj).to.exist;
         expect(promised_obj.jar).to.exist;
         done();
-      }, function() {
-        console.error('this shouldnt be happenin');
+      }, function(err) {
+        done(err);
       });
     });
 
     it("should reject if it cannot connect", function(done) {
-      sess.p = 'badpassword';
-      sess.login().then(function() {
-        console.log('should not happen');
-        expect('couldnt login').to.be.false;
-        done();
-      }, function(err) {
-        expect(err).to.exist;
+      sess.password = 'badpassword';
+      sess.login().then(function(err) {
+        done(err);
+      }, function() {
         done();
       });
     });
@@ -53,9 +50,7 @@ describe("Minerva", function () {
         expect(content[0].Grade).to.exist;
         done();
       }, function(err) {
-        console.error(err);
-        expect(err).to.not.exist;
-        done();
+        done(err);
       });
     });
   });
@@ -69,7 +64,7 @@ describe("Minerva", function () {
         expect(courses[0].Subj).to.equal('COMP');
         expect(courses[0].Crse).to.equal('250');
         done();
-      }).fail(function (err) {
+      }, function (err) {
         expect(err).to.not.exist;
         done();
       });
@@ -80,10 +75,8 @@ describe("Minerva", function () {
       .then(function(courses) {
         expect(courses).to.be.an.Array;
         done();
-      }).fail(function(err) {
-        console.log(err);
-        expect(err).to.not.exist;
-        done();
+      }, function(err) {
+        done(err);
       });
     });
   });
@@ -96,9 +89,7 @@ describe("Minerva", function () {
         expect(promised_obj[0]).to.include.keys('Status', 'CRN', 'Type');
         done();
       }, function(err) {
-        console.log(err);
-        expect(false).to.be.true;
-        done();
+        done(err);
       });
     });
 
@@ -109,9 +100,7 @@ describe("Minerva", function () {
         expect(promised_obj.length).to.be.equal(0);
         done();
       }, function(err) {
-        console.log(err);
-        expect(false).to.be.true;
-        done();
+        done(err);
       });
     });
   });
@@ -125,9 +114,7 @@ describe("Minerva", function () {
         expect(wr_course.Status).to.contain('Web Registered on');
         done();
       }, function(err) {
-        console.log(err);
-        expect(false).to.be.true;
-        done();
+        done(err);
       });
     });
 
@@ -140,9 +127,7 @@ describe("Minerva", function () {
         expect(wr_course2.Status).to.contain('Web Registered on');
         done();
       }, function(err) {
-        console.log(err);
-        expect(false).to.be.true;
-        done();
+        done(err);
       });
     });
 
@@ -152,8 +137,7 @@ describe("Minerva", function () {
         expect(false).to.be.true;
         done();
       }, function(err) {
-        expect(err).to.exist;
-        done();
+        done(err);
       });
     });
   });
@@ -165,9 +149,7 @@ describe("Minerva", function () {
         expect(true).to.be.true;
         done();
       }, function(err) {
-        console.log(err);
-        expect(false).to.be.true;
-        done();
+        done(err);
       });
     });
 
@@ -180,21 +162,17 @@ describe("Minerva", function () {
         expect(wr_course2).to.be.undefined;
         done();
       }, function(err) {
-        console.log(err);
-        expect(false).to.be.true;
-        done();
+        done(err);
       });
     });
 
     it("should tell you if you couldnt drop course", function(done) {
       sess.dropCourses({season: 'w', year: '2015', crn: '3050'})
-      .then(null, function(err) {
+      .then(function(err) {
         expect(err).to.exist;
         done();
       }, function(err) {
-        console.log(err);
-        expect(false).to.be.true;
-        done();
+        done(err);
       });
     });
   });
