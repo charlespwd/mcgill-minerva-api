@@ -12,7 +12,7 @@ function login(user) {
   var deferred = q.defer();
 
   var url = CONSTANTS.URLS.login;
-  var jar = Request.jar('TESTID=set');
+  var jar = Request.jar('TESTID=set'); // required for login.
   var form = {
     sid:  user.username,
     PIN:  user.password
@@ -21,14 +21,14 @@ function login(user) {
   function retry(jar, retry_count) {
     retry_count = retry_count;
     return Request.post(url, jar, form)
-    .then(function(promised_obj) {
-      var cookie_string = promised_obj.jar.getCookieString(CONSTANTS.BASE_URL + '/');
+    .then(function(response) {
+      var cookie_string = response.jar.getCookieString(CONSTANTS.BASE_URL + '/');
       var contains_sessid = cookie_string.indexOf('SESSID=') !== -1;
       if (contains_sessid) {
-        deferred.resolve(promised_obj);
+        deferred.resolve(response);
       } else {
         if (retry_count < CONSTANTS.MAX_RETRY_COUNT) {
-          retry(promised_obj.jar, retry_count + 1);
+          retry(response.jar, retry_count + 1);
         } else {
           deferred.reject(new Error('could not login'));
         }
@@ -42,16 +42,16 @@ function login(user) {
 }
 
 function promiseTranscript() {
-  return function(promised_obj) {
+  return function(response) {
     var deferred = q.defer();
 
     var url = CONSTANTS.URLS.transcript;
-    var jar = promised_obj.jar;
+    var jar = response.jar;
 
     Request.get(url, jar)
-    .then(function(promised_obj) {
-      if (utils.isLoggedIn(promised_obj.body)) {
-        deferred.resolve(promised_obj);
+    .then(function(response) {
+      if (utils.isLoggedIn(response.body)) {
+        deferred.resolve(response);
       } else {
         deferred.reject(new Error('got 404'));
       }
@@ -62,20 +62,19 @@ function promiseTranscript() {
 }
 
 function promiseCourses(selection) {
-  return function(promised_obj) {
+  return function(response) {
     // this is a hack cause I have no clue what the fuck is going on with
     // McGill's post data on that form. Somehow they duplicate keys, put dummy
     // somewhere, some random %25s, ...  I'm not sure but I think I have to
     // write the damn thing by hand and in order.  sooo... This is my not so
     // elegant solution but it works and I'm happy :) If you can refactor it,
     // feel free :)
-    function formUrlEncode(sel) {
-      // sel keys : dep, number, season, year
-      // season matches WSF for winter summer fall
-      var sn = utils.fmtSeason(sel.season);
+    function formUrlEncode(options) {
+      // options keys : dep, number, season, year
+      var season = utils.fmtSeason(options.season);
 
-      var boilerplate = [
-        "term_in=" + (sel.year || '2015') + sn,
+      var request_body = [
+        "term_in=" + (options.year || '2015') + season,
         "&sel_subj=dummy",
         "&sel_day=dummy",
         "&sel_schd=dummy",
@@ -86,8 +85,8 @@ function promiseCourses(selection) {
         "&sel_instr=dummy",
         "&sel_ptrm=dummy",
         "&sel_attr=dummy",
-        "&sel_subj=" + (sel.dep || 'COMP').toUpperCase(),
-        "&sel_crse=" + (sel.number || ''),
+        "&sel_subj=" + (options.dep || 'COMP').toUpperCase(),
+        "&sel_crse=" + (options.number || ''),
         "&sel_title=",
         "&sel_schd=%25",
         "&sel_from_cred=",
@@ -103,22 +102,22 @@ function promiseCourses(selection) {
         "&end_mi=0",
         "&end_ap=a"
       ].join('');
-      return boilerplate;
+      return request_body;
     }
 
     var deferred = q.defer();
 
     var url = CONSTANTS.URLS.select_courses;
-    var jar = promised_obj.jar;
+    var jar = response.jar;
     var form = formUrlEncode(selection || {});
 
     Request.post(url, jar, form)
     .then(
 
     // success callback
-    function(coursesJarAndBody) {
-      if (utils.isLoggedIn(coursesJarAndBody.body)) {
-        deferred.resolve(coursesJarAndBody);
+    function(response) {
+      if (utils.isLoggedIn(response.body)) {
+        deferred.resolve(response);
       } else {
         deferred.reject(new Error('couldnt resolve course selection'));
       }
@@ -134,11 +133,11 @@ function promiseCourses(selection) {
 }
 
 function promiseRegisteredCourses(options) {
-  return function(promised_obj) {
+  return function(response) {
     var deferred = q.defer();
 
     var url = CONSTANTS.URLS.registered_courses;
-    var jar = promised_obj.jar;
+    var jar = response.jar;
     var form = {
       term_in: (options.year || '2015') + utils.fmtSeason(options.season)
     };
@@ -147,9 +146,9 @@ function promiseRegisteredCourses(options) {
     .then(
 
     // success callback
-    function(promised_obj) {
-      if (utils.isLoggedIn(promised_obj.body)) {
-        deferred.resolve(promised_obj);
+    function(response) {
+      if (utils.isLoggedIn(response.body)) {
+        deferred.resolve(response);
       } else {
         deferred.reject(new Error('couldnt get list of registered_courses'));
       }
@@ -164,18 +163,19 @@ function promiseRegisteredCourses(options) {
   };
 }
 
-function promiseAddOrDropCourse(drop, selection) {
-  return function(promised_obj) {
-    // OH... Myyyy... Goooood. Wtf were McGill Minerva's programmers
-    // thinking?????  This has GOT to be the most awful HTTP Post request you
-    // could imagine to build
-    function formUrlEncode(sel) {
-      // sel keys : dep, number, season, year
+function promiseAddOrDropCourse(drop_flag, selection) {
+  return function(response) {
+    // I appologize for the mess below. It has to be like this because
+    // McGill programmers, somehow, tought it was a good idea to
+    // include duplicate keys in their POST requests. You read me
+    // well. Duplicate keys. In a POST request...
+    function formUrlEncode(options) {
+      // options keys : dep, number, season, year
       // season matches WSF for winter summer fall
-      var sn = utils.fmtSeason(sel.season);
+      var season = utils.fmtSeason(options.season);
 
       var head = [
-        "term_in=" + (sel.year || '2015') + sn,
+        "term_in=" + (options.year || '2015') + season,
 
         // these are necessary otherwise post doesnt work... (wtf)
         "&RSTS_IN=DUMMY",
@@ -195,14 +195,13 @@ function promiseAddOrDropCourse(drop, selection) {
         "&MESG=DUMMY",
       ].join('');
 
-      if (!(sel.crn instanceof Array)) {
-        sel.crn = [sel.crn];
+      if (!(options.crn instanceof Array)) {
+        options.crn = [options.crn];
       }
 
-      var core_add = '', core_drop = '';
-      _.forEach(sel.crn, function(crn) {
-        // this is where it's happening for registering courses
-        core_add += [
+      var request_body_for_adding = '', request_body_for_dropping = '';
+      _.forEach(options.crn, function(crn) {
+        request_body_for_adding += [
           "&RSTS_IN=RW",
           "&CRN_IN=" + crn,
           "&assoc_term_in=",
@@ -211,10 +210,9 @@ function promiseAddOrDropCourse(drop, selection) {
           "&regs_row=0", // for dropping make this 10, for adding, make this 0
         ].join('');
 
-        // this is where it's happening for dropping course
-        core_drop += [
+        request_body_for_dropping += [
           "&RSTS_IN=DW",
-          "&assoc_term_in=" + (sel.year || '2015') + sn,
+          "&assoc_term_in=" + (options.year || '2015') + season,
           "&CRN_IN=" + crn,
           "&start_date_in=",
           "&end_date_in=",
@@ -228,22 +226,26 @@ function promiseAddOrDropCourse(drop, selection) {
         "&REG_BTN=Submit+Changes",
       ].join('');
 
-      return head + (drop ? core_drop : core_add) + tail ;
+      return [
+        head,
+        (drop_flag ? request_body_for_dropping : request_body_for_adding),
+        tail
+      ].join('');
     }
 
     var deferred = q.defer();
 
     var url = CONSTANTS.URLS.add_courses;
-    var jar = promised_obj.jar;
+    var jar = response.jar;
     var form = formUrlEncode(selection || {});
 
     Request.post(url, jar, form)
     .then(
 
     // success callback
-    function(promised_obj) {
-      if (utils.isLoggedIn(promised_obj.body)) {
-        deferred.resolve(promised_obj);
+    function(response) {
+      if (utils.isLoggedIn(response.body)) {
+        deferred.resolve(response);
       } else {
         deferred.reject(new Error('Either couldnt login, or 404, or 400 bad request'));
       }
@@ -286,8 +288,8 @@ Minerva.prototype = {
     .then(
 
     // success callback
-    function(promised_obj) {
-      var html = promised_obj.body;
+    function(response) {
+      var html = response.body;
       if (!utils.isLoggedIn(html)) {
         deferred.reject(new Error('404'));
       } else {
@@ -311,8 +313,8 @@ Minerva.prototype = {
     .then(
 
     // success callback
-    function(promised_obj) {
-      deferred.resolve(Parser.parseCourses(promised_obj.body));
+    function(response) {
+      deferred.resolve(Parser.parseCourses(response.body));
     },
 
     // failure callback
@@ -331,8 +333,8 @@ Minerva.prototype = {
     .then(
 
     // success callback
-    function(promised_obj) {
-      deferred.resolve(Parser.parseRegisteredCourses(promised_obj.body));
+    function(response) {
+      deferred.resolve(Parser.parseRegisteredCourses(response.body));
     },
 
     // error callback
@@ -351,8 +353,8 @@ Minerva.prototype = {
     .then(
 
     // success callback
-    function(promised_obj) {
-      var courses = Parser.parseRegisteredCourses(promised_obj.body);
+    function(response) {
+      var courses = Parser.parseRegisteredCourses(response.body);
       var error = _.find(courses, 'ErrorMsg');
       if (error) {
         deferred.reject(new Error(error.ErrorMsg));
@@ -377,8 +379,8 @@ Minerva.prototype = {
     .then(
 
     // success callback
-    function(promised_obj) {
-      var courses = Parser.parseRegisteredCourses(promised_obj.body);
+    function(response) {
+      var courses = Parser.parseRegisteredCourses(response.body);
       var error = _.find(courses, 'ErrorMsg');
       if (error) {
         deferred.reject(new Error(error.ErrorMsg));
