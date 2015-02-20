@@ -31,12 +31,7 @@ describe("Parser", function () {
     it("should extract the Subj, Crse, Type, Days, Time, Instructor", function() {
       var courses = Parser.parseCourses(mock_courses);
       expect(courses).to.be.an.Array;
-      expect(courses[0]).to.include.keys('CRN');
-      expect(courses[0]).to.include.keys('Subj');
-      expect(courses[0]).to.include.keys('Type');
-      expect(courses[0]).to.include.keys('Days');
-      expect(courses[0]).to.include.keys('Time');
-      expect(courses[0]).to.include.keys('Instructor');
+      expect(courses[0]).to.include.keys('CRN', 'Subj', 'Type', 'Days', 'Time', 'Instructor');
     });
 
     it("should return an empty array if no courses were found", function() {
