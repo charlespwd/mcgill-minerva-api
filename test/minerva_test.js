@@ -46,8 +46,8 @@ describe("Minerva", function () {
       sess.getTranscript()
       .then(function(content) {
         expect(content).to.be.an.Array;
-        expect(content[0].Subj).to.exist;
-        expect(content[0].Grade).to.exist;
+        expect(content[0].department).to.exist;
+        expect(content[0].grade).to.exist;
         done();
       }, function(err) {
         done(err);
@@ -61,12 +61,11 @@ describe("Minerva", function () {
       sess.getCourses(selection)
       .then(function(courses) {
         expect(courses).to.be.an.Array;
-        expect(courses[0].Subj).to.equal('COMP');
-        expect(courses[0].Crse).to.equal('250');
+        expect(courses[0].department).to.equal('COMP');
+        expect(courses[0].course_number).to.equal('250');
         done();
       }, function (err) {
-        expect(err).to.not.exist;
-        done();
+        done(err);
       });
     });
 
@@ -86,7 +85,7 @@ describe("Minerva", function () {
       sess.getRegisteredCourses({ season: 'w', year: '2015' })
       .then(function(promised_obj) {
         expect(promised_obj).to.be.an.Array;
-        expect(promised_obj[0]).to.include.keys('Status', 'CRN', 'Type');
+        expect(promised_obj[0]).to.include.keys('status', 'crn', 'type');
         done();
       }, function(err) {
         done(err);
