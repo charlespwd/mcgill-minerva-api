@@ -43,7 +43,7 @@ callback.
   * `getTranscript()`: returns a promise for an array of courses. Course example:
 ```javascript
 {
-  "RW": " " || "RW", // Web registered or not
+  "completed": " " || "RW", // Web registered or not
   "department": "COMP",
   "course_number": "208",
   "section": "001",
@@ -61,7 +61,7 @@ callback.
     Return value example:
 ```javascript
 {
-  "isFull": true || false,
+  "is_full": true || false,
   "crn": '709',
   "department": 'COMP',
   "course_number": '250',
