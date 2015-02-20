@@ -1,8 +1,8 @@
 # mcgill-minerva-api
 
-A javascript abstraction layer over McGill's awful minerva. It can:
- * return your unofficial transcript as json
- * search for courses (by dep, number and semester)
+A Javascript abstraction of McGill's Minerva. It can:
+ * fetch your transcript as json
+ * search for courses (by department, course number and semester)
  * add/drop courses
 
 ## Getting Started
@@ -81,9 +81,6 @@ callback.
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
-
-## Release History
-_(Nothing yet)_
 
 ## License
 Copyright (c) 2014 Charles P Clermont. Licensed under the MIT license.
